@@ -1,6 +1,8 @@
 # Rules to be implemented (in pseudo code)
 
 # Map of site
+ - public
+ - |- favicon
 
 # Design Ideas
 - Be able to switch between a dice roller API and an "in game" roller?
