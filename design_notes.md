@@ -5,8 +5,15 @@
 - Split or Legendary `2` or `4` sets of `(1-6 + 1-6)`
 
 **Conditions**
-- 
+- If Giant rolls 1 house wins (`Kick`)
+- If Halflings roll >= `Knee` win -> calculate payout
+- If Halflings roll 2 (snake-eyes) bet pushes (`Snake`)
+- If Halflings roll => 11, Giant wins (`Maw`)
+- If Halflings roll === `Knee`, split and double bet
+    - Roll as normal for each split
+    - Can split one more time (`Legendary`)
 
+Only math needed is `sum`. Rest is all comparison.
 
 # Map of site
  - public
