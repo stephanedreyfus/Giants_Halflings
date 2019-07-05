@@ -5,6 +5,7 @@ import Giant from './Giant';
 import '.Game.css';
 
 const NUM_DICE = 2;
+const STARTING_FUNDS = 30;
 
 class Game extends Component {
   constructor(props) {
@@ -13,40 +14,51 @@ class Game extends Component {
       halflingDice: Array.from({ length: NUM_DICE}),
       locked: Array(NUM_DICE).fill(false),
       giantDie: [5],
+      giantLock: false,
       split: false,
       legendary: false,
       coins: {
+        // House has unlimited funds, so this is how much you have lost to Giant
         giant: undefined,
-        halflings: undefined,
+        halflings: STARTING_FUNDS,
         pot: undefined,
       }
     };
-    this.roll = this.roll.bind(this);
-    this.toggleLocked = this.toggleLocked.bind(this);
+    this.rollHalflings = this.rollHalflings.bind(this);
+    this.rollGiant = this.rollGiant.bind(this);
+    this.toggleHalfLock = this.toggleHalfLock.bind(this);
     this.doResults = this.doResults.bind(this);
   }
 
   /**
    * Roll dice for halflings.
    * Currently rolls dice and locks all.
-   * ADD roll each die individually.
+   * EVENTUALLY add ability to roll each die individually.
    */
-  roll() {
+  rollHalflings() {
     this.setState(st => ({
       dice: st.dice.map(
         (d, i) => st.locked[i] ? d : Math.ceil(Math.random() * 6)),
       locked: Array(NUM_DICE).fill(true),
-      giantDie: [Math.ceil(Math.random() * 10)],
+    }));
+  }
+
+  /**
+   * Roll die for Giant.
+   */
+  rollGiant() {
+    this.setState(st => ({
+      giantDie: [Math.ceil(Math.random() * 10)]
     }));
   }
 
   /**
    * Takes in rolls and determines increase or decrease in coins depending
    * on rules and payout ratios.
-   * @param {*} ruleName 
-   * @param {*} ruleFn 
+   * @param {*} giantDie 
+   * @param {*} halflingDice 
    */
-  doResults(ruleName, ruleFn) {
+  doResults(giantDie, halflingDice) {
     this.setState(st => ({
 
       locked: Array(NUM_DICE).fill(false),
@@ -57,9 +69,17 @@ class Game extends Component {
     return (
       <section>
         <Halflings />
-        <Dice dice={this.state.dice} locked={this.state.locked} handleClick={this.toggleLocked} />
+        <Dice
+          dice={this.state.dice}
+          locked={this.state.locked}
+          handleClick={this.rollHalflings}
+        />
 
-        <Giant />
+        <Giant
+          die={this.state.giantDie}
+          locked={this.state.giantLock}
+          handleClick={this.rollGiant}
+        />
       </section>
     );
   }
