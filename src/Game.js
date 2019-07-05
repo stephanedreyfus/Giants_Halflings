@@ -41,7 +41,7 @@ class Game extends Component {
    * @param {int} gold    Amount wagered.
    */
   anteUp(evt, gold) {
-    // FIXME add prevent default here.
+    evt.preventDefault();
     this.setState(st => ({
       coins: {
         ...st.coins,
@@ -74,18 +74,24 @@ class Game extends Component {
   /**
    * Takes in rolls and determines increase or decrease in coins depending
    * on rules and payout ratios.
-   * @param {*} giantDie 
-   * @param {*} halflingDice 
+   * @param {int} giantDie        value of Giant's roll
+   * @param {int} halflingDice    sum of Halflings rolls
    */
   doResults(giantDie, halflingDice) {
+    
     this.setState(st => ({
 
       locked: Array(NUM_DICE).fill(false),
     }));
-    // FIXME conditional needed in case Halflings have gone to zero or below.
-    // FIXME under loss conditions show message and give button to restart.
     // EVENTUALLY offer option to borrow from Giant?
     this.anteUp();
+  }
+
+  /**
+   * Renders modal with loss message and restart button.
+   */
+  restartModal() {
+
   }
 
   render() {
