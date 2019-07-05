@@ -17,4 +17,14 @@ class Rule {
   sum(dice) {
     return dice.reduce((prev, curr) => prev + curr);
   }
+
+  compare(giant, halflingTotal) {
+    return giant > halflingTotal ? 'loss' : 'win';
+  }
+}
+
+class Kick extends Rule {
+  evalRoll = (giant, dice) => {
+    return 'reset';
+  }
 }

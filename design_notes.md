@@ -15,6 +15,12 @@
 
 Only math needed is `sum`. Rest is all comparison.
 
+**Payouts**
+Knee is 2-3, house pays 1:1
+Knee is 4-6, house pays 2:1
+Knee is 7-9, house pays 3:1
+Knee is 10, house pays 5:1
+
 # Map of site
  - public
  - |- favicon
