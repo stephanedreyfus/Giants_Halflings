@@ -23,8 +23,6 @@ class Rule {
   }
 }
 
-class Kick extends Rule {
-  evalRoll = (giant, dice) => {
-    return 'reset';
-  }
-}
+export {
+  Rule,
+};
