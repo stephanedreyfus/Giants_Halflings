@@ -2,6 +2,10 @@
 ### A Game of Chance in Which Halflings Attempt to Take On a Giant
 Giants and Halflings is a game of chance created by [Jerry Holkins][1], and implemented in [a game][2] of [D&D][3] that he was ([and still is][4]) running for his friends.
 
+
+**Images**
+[Halflings][5] and [giant][6] images are copyrighted to [Wizards of the Coast][7].
+
 ## RULES
 
 #### Play actions
@@ -49,3 +53,6 @@ becoming legendary means you've effectively quadrupled your bet. doesn't seem to
 [2]: https://www.youtube.com/watch?v=PrVPrdPpz5g&list=PLjZRIC6PMEFkWSAyAcwsiqCIbKXe9lMoF&index=16
 [3]: (https://www.youtube.com/watch?v=PrVPrdPpz5g&list=PLjZRIC6PMEFkWSAyAcwsiqCIbKXe9lMoF&index=16) 
 [4]: http://www.acq-inc.com/cteam/video/2
+[5]: public/halflings.jpg
+[6]: public/giant.jpg
+[7]: https://company.wizards.com/
