@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
 class Pot extends Component {
+
   render() {
     const { gold, handleSubmit } = this.props;
+    
     return(
       <section className='pot'>
         <div>Current pot holds {gold} coins.</div>

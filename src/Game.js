@@ -77,22 +77,22 @@ class Game extends Component {
    * @param {int} giantDie        value of Giant's roll
    * @param {int} halflingDice    sum of Halflings rolls
    */
-  doResults(giantDie, halflingDice) {
+  // doResults(giantDie, halflingDice) {
     
-    this.setState(st => ({
+  //   this.setState(st => ({
 
-      locked: Array(NUM_DICE).fill(false),
-    }));
-    // EVENTUALLY offer option to borrow from Giant?
-    this.anteUp();
-  }
+  //     locked: Array(NUM_DICE).fill(false),
+  //   }));
+  //   // EVENTUALLY offer option to borrow from Giant?
+  //   this.anteUp();
+  // }
 
   /**
    * Renders modal with loss message and restart button.
    */
-  restartModal() {
+  // restartModal() {
 
-  }
+  // }
 
   render() {
     return (
