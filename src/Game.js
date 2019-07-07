@@ -34,7 +34,7 @@ class Game extends Component {
     this.doResults = this.doResults.bind(this);
   }
 
-  // modal handlers
+  // modal toggle
   toggleModal = () => {
     this.setState(
       st => ({isShowing: !st.isShowing})
