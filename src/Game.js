@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Modal from './Modal';
 import Pot from './Pot';
 import Dice from './Dice';
 import Halflings from './Halflings';
@@ -12,7 +13,7 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      halflingDice: Array.from({ length: NUM_DICE}),
+      halflingDice: Array.from({ length: NUM_DICE }),
       locked: Array(NUM_DICE).fill(false),
       giantDie: [5],
       giantLock: false,
@@ -23,13 +24,27 @@ class Game extends Component {
         giant: undefined,
         halflings: STARTING_FUNDS,
         pot: 0,
-      }
+      },
+      isShowing: false
     };
     this.anteUp = this.anteUp.bind(this);
     this.rollHalflings = this.rollHalflings.bind(this);
     this.rollGiant = this.rollGiant.bind(this);
     this.toggleHalfLock = this.toggleHalfLock.bind(this);
     this.doResults = this.doResults.bind(this);
+  }
+
+  // modal handlers
+  openModalHandler = () => {
+    this.setState({
+      isShowing: true
+    });
+  }
+
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false
+    });
   }
 
   /**
@@ -68,7 +83,7 @@ class Game extends Component {
    * Roll die for Giant.
    */
   rollGiant() {
-    this.setState({giantDie: [Math.ceil(Math.random() * 10)]});
+    this.setState({ giantDie: [Math.ceil(Math.random() * 10)] });
   }
 
   /**
@@ -78,7 +93,7 @@ class Game extends Component {
    * @param {int} halflingDice    sum of Halflings rolls
    */
   // doResults(giantDie, halflingDice) {
-    
+
   //   this.setState(st => ({
 
   //     locked: Array(NUM_DICE).fill(false),
@@ -97,8 +112,20 @@ class Game extends Component {
   render() {
     return (
       <section>
+        <div>
+            { this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }
+
+            <button className="open-modal-btn" onClick={this.openModalHandler}>Open Modal</button>
+
+            <Modal
+              className="modal"
+              show={this.state.isShowing}
+              close={this.closeModalHandler}>
+                Maybe aircrafts fly very high because they don't want to be seen in plane sight?
+            </Modal>
+          </div>
         <Halflings />
-        <Pot gold={this.state.coins.pot} handleSubmit={this.anteUp}/>
+        <Pot gold={this.state.coins.pot} handleSubmit={this.anteUp} />
         <Dice
           dice={this.state.dice}
           locked={this.state.locked}
