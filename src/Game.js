@@ -35,16 +35,10 @@ class Game extends Component {
   }
 
   // modal handlers
-  openModalHandler = () => {
-    this.setState({
-      isShowing: true
-    });
-  }
-
-  closeModalHandler = () => {
-    this.setState({
-      isShowing: false
-    });
+  toggleModal = () => {
+    this.setState(
+      st => ({isShowing: !st.isShowing})
+    );
   }
 
   /**
@@ -113,14 +107,14 @@ class Game extends Component {
     return (
       <section>
         <div>
-            { this.state.isShowing ? <div onClick={this.closeModalHandler} className="back-drop"></div> : null }
+            { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
 
-            <button className="open-modal-btn" onClick={this.openModalHandler}>Open Modal</button>
+            <button className="open-modal-btn" onClick={this.toggleModal}>Open Modal</button>
 
             <Modal
               className="modal"
               show={this.state.isShowing}
-              close={this.closeModalHandler}>
+              close={this.toggleModal}>
                 Maybe aircrafts fly very high because they don't want to be seen in plane sight?
             </Modal>
           </div>
