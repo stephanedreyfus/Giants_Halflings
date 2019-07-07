@@ -4,7 +4,7 @@ import Pot from './Pot';
 import Dice from './Dice';
 import Halflings from './Halflings';
 import Giant from './Giant';
-import '.Game.css';
+import './Game.css';
 
 const NUM_DICE = 2;
 const STARTING_FUNDS = 30;
@@ -30,8 +30,8 @@ class Game extends Component {
     this.anteUp = this.anteUp.bind(this);
     this.rollHalflings = this.rollHalflings.bind(this);
     this.rollGiant = this.rollGiant.bind(this);
-    this.toggleHalfLock = this.toggleHalfLock.bind(this);
-    this.doResults = this.doResults.bind(this);
+    // this.toggleHalfLock = this.toggleHalfLock.bind(this);
+    // this.doResults = this.doResults.bind(this);
   }
 
   // modal toggle

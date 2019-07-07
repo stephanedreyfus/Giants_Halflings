@@ -133,3 +133,5 @@ export function unregister() {
     });
   }
 }
+
+export default registerServiceWorker;
