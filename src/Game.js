@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Modal from './Modal';
 import Pot from './Pot';
-import Dice from './Dice';
 import Halflings from './Halflings';
 import Giant from './Giant';
 import './Game.css';
@@ -21,8 +20,8 @@ class Game extends Component {
       legendary: false,
       coins: {
         // House has unlimited funds, so this is how much you have lost to Giant
-        giant: undefined,
-        halflings: STARTING_FUNDS,
+        giantHoard: 0,
+        halflingLoot: STARTING_FUNDS,
         pot: 0,
       },
       isShowing: false
@@ -118,18 +117,18 @@ class Game extends Component {
                 Maybe aircrafts fly very high because they don't want to be seen in plane sight?
             </Modal>
           </div>
-        <Halflings />
-        <Pot gold={this.state.coins.pot} handleSubmit={this.anteUp} />
-        <Dice
+        <Halflings 
           dice={this.state.dice}
           locked={this.state.locked}
-          handleClick={this.rollHalflings}
+          handleClick={this.rollGiant}
+          loot={this.state.halflingLoot}
         />
-
+        <Pot gold={this.state.coins.pot} handleSubmit={this.anteUp} />
         <Giant
-          die={this.state.giantDie}
+          val={this.state.giantDie}
           locked={this.state.giantLock}
           handleClick={this.rollGiant}
+          hoard={this.state.coins.giantHoard}
         />
       </section>
     );
