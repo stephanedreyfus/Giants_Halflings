@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Modal.css';
 
 // FIXME Refactor into styled components.
@@ -28,5 +29,11 @@ const Modal = (props) => {
     </div>
   );
 };
+
+Modal.propTypes = {
+  show: PropTypes.bool,
+  close: PropTypes.func,
+  children: PropTypes.element,
+}
 
 export default Modal;

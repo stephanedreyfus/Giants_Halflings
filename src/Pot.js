@@ -18,4 +18,9 @@ class Pot extends Component {
   }
 }
 
+Pot.propTypes = {
+  gold: PropTypes.number,
+  handleSubmit: PropTypes.func
+}
+
 export default Pot;
