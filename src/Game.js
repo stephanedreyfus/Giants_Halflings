@@ -117,6 +117,7 @@ class Game extends Component {
                 Maybe aircrafts fly very high because they don't want to be seen in plane sight?
             </Modal>
           </div>
+          
         <Halflings 
           dice={this.state.dice}
           locked={this.state.locked}

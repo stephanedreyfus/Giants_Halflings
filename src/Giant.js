@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default function Giant(props) {
   return (
-    <section>
+    <div>
       <div>Giant's Hoard: {props.hoard}</div>
       <Die
         val={props.val}
@@ -11,7 +11,7 @@ export default function Giant(props) {
         handleClick={props.handleClick}
         idx={0}
       />
-    </section>
+    </div>
   );
 }
 
