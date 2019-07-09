@@ -113,16 +113,17 @@ class Game extends Component {
             <Modal
               className="modal"
               show={this.state.isShowing}
-              close={this.toggleModal}>
-                Maybe aircrafts fly very high because they don't want to be seen in plane sight?
+              close={this.toggleModal}
+            >
+              Maybe aircrafts fly very high because they don't want to be seen in plane sight?
             </Modal>
           </div>
           
         <Halflings 
-          dice={this.state.dice}
+          dice={this.state.halflingDice}
           locked={this.state.locked}
-          handleClick={this.rollGiant}
-          loot={this.state.halflingLoot}
+          handleClick={this.rollHalflings}
+          loot={this.state.coins.halflingLoot}
         />
         <Pot gold={this.state.coins.pot} handleSubmit={this.anteUp} />
         <Giant
