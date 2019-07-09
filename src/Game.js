@@ -104,7 +104,7 @@ class Game extends Component {
 
   render() {
     return (
-      <section>
+      <section className="Game">
         <div>
             { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
 
