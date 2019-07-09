@@ -39,3 +39,26 @@ Knee is 10, house pays 5:1
 - [ ] Images?
 - [ ] Wagering
 - [ ] Keeping track of scores: cookies? db?
+
+# Game Flow
+- Start of play at window load:
+    1. Modal with small `intro`.
+    2. `Continue` takes you to `rules` Modal
+    3. `Continue` takes you to `ante up`
+    4. `Ante` close modal
+    5. Player can see:
+        - `pot`
+        - `Giant's roll`
+        - and a `roll` button on/near `Halfling dice`
+            - Could have a message with "Click dice to roll."
+    6. `Halfling roll`
+        - shows `roll`
+        - shows result in text in `Pot` segment
+            - If `split` or `legendary` go to 5 with updated `dice` pool.
+        - shows changes to `Loot`, `Hoard`, `Pot`. `Pot` should be at 0.
+        - If `loss` go to 8
+    7. `Ante up` modal opens and we return to step 4.
+    8. `Loss` Modal
+        - See stats
+        - **EVENTUALLY** Add name to high score list
+            - Need `DB` and `API`

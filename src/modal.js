@@ -8,6 +8,7 @@ const Modal = (props) => {
   const {
     btnText = 'CONTINUE',
     header = 'Welcome to Giants and Halflings!',
+    baseGold,
     children = `You start with ${baseGold}`,
     show,
     close,
@@ -29,7 +30,7 @@ const Modal = (props) => {
           </div>
         </div>
         <div className="modal-footer">
-          <button className="btn-continue">{btnText}</button>
+          <button className="btn-continue" onClick={close}>{btnText}</button>
         </div> 
       </div>
     </div>
