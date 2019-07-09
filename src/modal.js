@@ -7,8 +7,8 @@ import './Modal.css';
 const Modal = (props) => {
   const {
     btnText = 'CONTINUE',
-    header = 'A modal has appeared!',
-    children = 'Content not found.',
+    header = 'Welcome to Giants and Halflings!',
+    children = `You start with ${baseGold}`,
     show,
     close,
   } = props;
@@ -44,6 +44,7 @@ Modal.propTypes = {
   show: PropTypes.bool,
   close: PropTypes.func,
   children: PropTypes.node.isRequired,
+  baseGold: PropTypes.number,
 }
 
 export default Modal;

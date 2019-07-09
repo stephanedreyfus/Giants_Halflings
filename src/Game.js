@@ -113,7 +113,8 @@ class Game extends Component {
             <Modal
               className="modal"
               show={this.state.isShowing}
-              close={this.toggleModal}
+              close={this.anteUp}
+              baseGold={this.STARTING_FUNDS}
             >
               Maybe aircrafts fly very high because they don't want to be seen in plane sight?
             </Modal>
