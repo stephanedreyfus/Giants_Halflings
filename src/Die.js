@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Die.css';
 
-export default Die = ({locked, handleClick, idx, val}) => (
-  <button
-    className={locked ? "Die Die-locked" : "Die"}
-    onClick={() => handleClick(idx)}>
-    { val }
-  </button>
-);
+export default function Die(props) {
+  return(
+    <button
+      className={props.locked ? "Die Die-locked" : "Die"}
+      onClick={() => props.handleClick(props.idx)}>
+      { props.val }
+    </button>
+  )
+};
 
 Die.propTypes = {
   locked: PropTypes.bool,
