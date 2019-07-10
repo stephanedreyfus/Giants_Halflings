@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Die.css';
+import { Die } from './styling/DiceStyle';
 
 export default function Die(props) {
   return(
-    <button
-      className={props.locked ? "Die Die-locked" : "Die"}
+    <Die
       onClick={() => props.handleClick(props.idx)}>
       { props.val }
-    </button>
+    </Die>
   )
 };
 
