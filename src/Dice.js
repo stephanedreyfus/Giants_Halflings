@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Die from './Die';
-import { Dice } from './styling/DiceStyle';
+import { DiceDiv } from './styling/DiceStyle';
 
 class Dice extends Component {
   render() {
     return (
-      <Dice>
+      <DiceDiv>
         {this.props.dice.map((d, idx) =>
           <Die
             handleClick={this.props.handleClick}
@@ -16,7 +16,7 @@ class Dice extends Component {
             key={idx}
           />
         )}
-      </Dice>
+      </DiceDiv>
     );
   }
 }

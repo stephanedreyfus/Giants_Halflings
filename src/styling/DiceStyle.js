@@ -1,12 +1,14 @@
+import styled from 'styled-components';
+
 // Styled div for Dice element
-export const Dice = styled.div`
+export const DiceDiv = styled.div`
   font-size: 1.5em;
   text-align: center;
   color: palevioletred;
 `;
 
 // Styled button that is a "Die"
-export const Die = styled.button`
+export const DieBtn = styled.button`
 font-size: 25px;
   display: inline-block;
   padding: 0.5em 0.8em;

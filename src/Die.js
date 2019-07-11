@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Die } from './styling/DiceStyle';
+import { DieBtn } from './styling/DiceStyle';
 
 export default function Die(props) {
   return(
-    <Die
+    <DieBtn
       onClick={() => props.handleClick(props.idx)}>
       { props.val }
-    </Die>
+    </DieBtn>
   )
 };
 
