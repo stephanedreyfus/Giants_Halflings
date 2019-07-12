@@ -72,9 +72,7 @@ class Game extends Component {
     }));
   }
 
-  /**
-   * Roll die for Giant.
-   */
+  /** Roll die for Giant. */
   rollGiant() {
     this.setState({ giantDie: [Math.ceil(Math.random() * 10)] });
   }

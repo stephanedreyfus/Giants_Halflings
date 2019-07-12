@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+/** Takes in gold wagered and submits values to
+ * Rules for calculation of results. */
 class Pot extends Component {
 
   render() {

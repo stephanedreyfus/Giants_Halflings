@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<styled.div>
+  <Die
+    idx={0}
+    key="0"
+    locked={false}
+    val={1}
+  />
+  <Die
+    idx={1}
+    key="1"
+    locked={false}
+    val={2}
+  />
+  <Die
+    idx={2}
+    key="2"
+    locked={false}
+    val={6}
+  />
+  <Die
+    idx={3}
+    key="3"
+    locked={true}
+    val={4}
+  />
+  <Die
+    idx={4}
+    key="4"
+    locked={true}
+    val={4}
+  />
+</styled.div>
+`;

@@ -2,7 +2,7 @@
 **Incoming Data**
 - Giant Roll of `1-10`, result is called the `Knee`
 - Halfing Roll of `(1-6 + 1-6)`
-- Split or Legendary `2` or `4` sets of `(1-6 + 1-6)`
+- Split or Legendary `2` or `3` sets of `(1-6 + 1-6)`
 
 **Conditions**
 - If Giant rolls 1 house wins (`Kick`)

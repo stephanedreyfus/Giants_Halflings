@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot when locked 1`] = `
+<styled.button
+  onClick={[Function]}
+/>
+`;
+
+exports[`matches snapshot when unlocked 1`] = `
+<styled.button
+  onClick={[Function]}
+/>
+`;
