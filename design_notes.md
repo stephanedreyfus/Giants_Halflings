@@ -28,7 +28,7 @@ Knee is 10, house pays 5:1
 # Design Ideas
 - Be able to switch between a dice roller API and an "in game" roller?
 - Look up dice rolling animation
-- 
+- Coin pile in css?
 
 # Tasks
 - [ ] Decide basic visual layout
