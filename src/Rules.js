@@ -13,7 +13,7 @@ class Rules {
     return halflingDice.reduce((prev, curr)=> prev + curr);
   }
 
-  evalResults(halflings, knee, pot) {
+  evalResults(halflings = this.sum, knee, pot) {
     const fiveToOne = [10];
     const threeToOne = [7, 8, 9];
     const twoToOne = [4, 5, 6];
