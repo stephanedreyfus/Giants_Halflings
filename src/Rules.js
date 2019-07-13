@@ -1,18 +1,25 @@
-/** Rules for scoring Giants and Halflings:
- * @param {int} gold
- * @param {int} halflingDice    sum of two die vals
- * @param {int} giantDie
- */
 
+/** Simple Rules
+ * An abstract class with basic helper functions for
+ * more complext rules instances. Currently only has a
+ * sum function.
+ */
 class Rules {
   constructor(params) {
     Object.assign(this, params);
   }
-
+  
   sum(halflingDice) {
     return halflingDice.reduce((prev, curr)=> prev + curr);
   }
+}
 
+/** Evalutations for scoring Giants and Halflings:
+ * @param {int} halflingDice    sum of two die vals
+ * @param {int} giantDie
+ * @param {int} gold
+ */
+class Score extends Rules {
   evalResults(halflings = this.sum, knee, pot) {
     const fiveToOne = [10];
     const threeToOne = [7, 8, 9];
@@ -50,7 +57,12 @@ class Rules {
     
     return -1;
   }
-
 }
 
-export default Rules;
+const rules = new Rules()
+const score = new Score()
+
+export {
+  rules,
+  score,
+};
