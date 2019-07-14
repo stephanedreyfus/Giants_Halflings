@@ -3,9 +3,13 @@ import { shallow } from 'enzyme';
 // import toJson from 'enzyme-to-json';
 import Game from './Dice';
 
+const handleClick = () => {};
+const dice = [2, 5];
+const locked = [true, true];
+
 it('renders without crashing', () => {
     shallow(
-        <Game />
+        <Game locked={locked} dice={dice} handleClick={handleClick} />
         );
     });
     

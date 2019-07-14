@@ -21,6 +21,7 @@ class Rules {
  */
 class Score extends Rules {
   evalResults(halflings = this.sum, knee, pot) {
+    console.log("Parameters", this.params, "%%%%%%%%%%%%%%%%%%%%%")
     const fiveToOne = [10];
     const threeToOne = [7, 8, 9];
     const twoToOne = [4, 5, 6];
@@ -59,10 +60,6 @@ class Score extends Rules {
   }
 }
 
-const rules = new Rules()
-const score = new Score()
+const doScore = new Score()
 
-export {
-  rules,
-  score,
-};
+export { doScore }

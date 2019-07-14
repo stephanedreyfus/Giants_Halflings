@@ -3,30 +3,35 @@
 exports[`matches snapshot 1`] = `
 <styled.div>
   <Die
+    handleClick={[Function]}
     idx={0}
     key="0"
     locked={false}
     val={1}
   />
   <Die
+    handleClick={[Function]}
     idx={1}
     key="1"
     locked={false}
     val={2}
   />
   <Die
+    handleClick={[Function]}
     idx={2}
     key="2"
     locked={false}
     val={6}
   />
   <Die
+    handleClick={[Function]}
     idx={3}
     key="3"
     locked={true}
     val={4}
   />
   <Die
+    handleClick={[Function]}
     idx={4}
     key="4"
     locked={true}
