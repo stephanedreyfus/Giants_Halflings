@@ -18,6 +18,7 @@ class Game extends Component {
       giantLock: false,
       split: false,
       legendary: false,
+      wagerInput: 0,
       coins: {
         // House has unlimited funds, so this is how much you have lost to Giant
         giantHoard: 0,
@@ -57,12 +58,12 @@ class Game extends Component {
         halflings: (st.coin.halflings - gold),
       }
     }));
+    this.toggleModal();
   }
 
   /**
    * Roll dice for halflings.
    * Currently rolls dice and locks all.
-   * EVENTUALLY add ability to roll each die individually.
    */
   rollHalflings() {
     this.setState(st => ({
@@ -89,16 +90,22 @@ class Game extends Component {
 
   //     locked: Array(NUM_DICE).fill(false),
   //   }));
-  //   // EVENTUALLY offer option to borrow from Giant?
   //   this.anteUp();
   // }
 
-  /**
-   * Renders modal with loss message and restart button.
-   */
-  // restartModal() {
-
-  // }
+  /** Renders modal with loss message and restart button. */
+  restartModal() {
+    return (
+      <Modal
+        className="modal"
+        show={this.state.isShowing}
+        close={this.restart}
+        baseGold={0}
+      >
+        The Giant has won and you are out of gold. Click below to restart.
+      </Modal>
+    );
+  }
 
   render() {
     return (
@@ -114,7 +121,15 @@ class Game extends Component {
               close={this.anteUp}
               baseGold={this.STARTING_FUNDS}
             >
-              Maybe aircrafts fly very high because they don't want to be seen in plane sight?
+              <form action="submit">
+                <label htmlFor="wager">What's your wager?</label>
+                <input
+                  name="wager"
+                  type="int-field"
+                  defaultValue={this.state.wagerInput}
+                />
+                <button onSubmit={this.anteUp}>Place Wager</button>
+              </form>
             </Modal>
           </div>
           
@@ -124,7 +139,7 @@ class Game extends Component {
           handleClick={this.rollHalflings}
           loot={this.state.coins.halflingLoot}
         />
-        <Pot gold={this.state.coins.pot} handleSubmit={this.anteUp} />
+        <Pot gold={this.state.coins.pot} />
         <Giant
           val={this.state.giantDie}
           locked={this.state.giantLock}

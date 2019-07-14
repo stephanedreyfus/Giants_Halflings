@@ -38,8 +38,12 @@ Knee is 10, house pays 5:1
 - [ ] `Payout` display and code
 - [ ] Images?
 - [ ] Wagering
-- [ ] Keeping track of scores: cookies? db?
-
+- [ ] `EVENTUALLY` Keeping track of scores: cookies? db?
+- [ ] `EVENTUALLY` List highest amount of gold one had before loss in restart modal text.
+- [ ] `EVENTUALLY` offer option to borrow from Giant? Perhaps at a disadvantage to scoring for a time?
+- [ ] `EVENTUALLY` add ability to roll each Halfling die individually.
+- [ ] `EVENTUALLY` two player version where someone can roll as Giant.
+ 
 # Game Flow
 - Start of play at window load:
     1. Modal with small `intro`.
