@@ -1,7 +1,5 @@
 import { doScore } from './Rules';
 
-console.log("What is doScore.sum?", doScore.sum([4, 5]), "@@@@@@@@@@@@@@@@@@@@@@@");
-
 it('sums two halfling dice', () => {
   expect(doScore.sum([3, 4])).toEqual(7);
 });
@@ -40,4 +38,10 @@ it('returns 1:1 reward', () => {
   expect(doScore.evalResults([2, 1], 3, 15)).toEqual(30);
 });
 
-// FIXME need to add non specific loss tests
+it('returns a loss if roll below knee (a)', () => {
+  expect(doScore.evalResults([2, 1], 10, 15)).toEqual(-1);
+});
+
+it('returns a loss if roll below knee (b)', () => {
+  expect(doScore.evalResults([3, 2], 6, 15)).toEqual(-1);
+});

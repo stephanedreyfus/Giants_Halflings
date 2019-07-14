@@ -21,9 +21,7 @@ class Rules {
  */
 class Score extends Rules {
   evalResults(dice, knee, pot) {
-    console.log("Parameters", this.params, "%%%%%%%%%%%%%%%%%%%%%")
     const halflings = this.sum(dice);
-    const fiveToOne = [10];
     const threeToOne = [7, 8, 9];
     const twoToOne = [4, 5, 6];
     const oneToOne = [2, 3];
@@ -38,22 +36,22 @@ class Score extends Rules {
     if (halflings === 2) return 0;
 
     // 5:1 win condition
-    if (fiveToOne.includes(knee) && fiveToOne.includes(halflings)) {
+    if (knee === 10 && halflings === 10) {
       return ( pot + (pot * 5));
     }
     
     // 3:1 win condition
-    if (threeToOne.includes(knee) && halflings > threeToOne[0]) {
+    if (threeToOne.includes(knee) && halflings >= knee) {
       return ( pot + (pot * 3));
     }
     
     // 2:1 win condition
-    if (twoToOne.includes(knee) && halflings > twoToOne[0]) {
+    if (twoToOne.includes(knee) && halflings >= knee) {
       return ( pot + (pot * 2));
     }
 
     // 1:1 win condition
-    if (oneToOne.includes(knee) && halflings > oneToOne[0]) {
+    if (oneToOne.includes(knee) && halflings >= knee) {
       return ( pot + pot);
     }
     
