@@ -15,13 +15,14 @@ class Rules {
 }
 
 /** Evalutations for scoring Giants and Halflings:
- * @param {int} halflingDice    sum of two die vals
+ * @param {arr} halflingDice    sum of two die vals
  * @param {int} giantDie
  * @param {int} gold
  */
 class Score extends Rules {
-  evalResults(halflings = this.sum, knee, pot) {
+  evalResults(dice, knee, pot) {
     console.log("Parameters", this.params, "%%%%%%%%%%%%%%%%%%%%%")
+    const halflings = this.sum(dice);
     const fiveToOne = [10];
     const threeToOne = [7, 8, 9];
     const twoToOne = [4, 5, 6];
@@ -53,7 +54,7 @@ class Score extends Rules {
 
     // 1:1 win condition
     if (oneToOne.includes(knee) && halflings > oneToOne[0]) {
-      return ( pot + (pot * 2));
+      return ( pot + pot);
     }
     
     return -1;
