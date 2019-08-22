@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 /** Dislplays current wager */
-// FIXME change to stateless function
+// FIXME change to stateless functional component
 class Pot extends Component {
 
   render() {
