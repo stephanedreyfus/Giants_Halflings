@@ -55,7 +55,7 @@ class Game extends Component {
       coins: {
         ...st.coins,
         pot: gold,
-        halflings: (st.coin.halflings - gold),
+        halflingLoot: (st.coins.halflingLoot - gold),
       }
     }));
     this.toggleModal();
@@ -67,7 +67,7 @@ class Game extends Component {
    */
   rollHalflings() {
     this.setState(st => ({
-      dice: st.dice.map(
+      halflingDice: st.halflingDice.map(
         (d, i) => st.locked[i] ? d : Math.ceil(Math.random() * 6)),
       locked: Array(NUM_DICE).fill(true),
     }));
