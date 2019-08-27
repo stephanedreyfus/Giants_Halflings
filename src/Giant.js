@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Die from './Die';
+import Dice from './Dice';
 
 // Giant currently rolls one die, but is coded to be able
 // to roll multiple if wanted.
@@ -8,17 +8,11 @@ export default function Giant(props) {
   return (
     <div>
       <div>Giant's Hoard: {props.hoard}</div>
-      <DiceDiv>
-        {this.props.dice.map((d, idx) =>
-          <Die
-            handleClick={this.props.handleClick}
-            val={d}
-            locked={this.props.locked[idx]}
-            idx={idx}
-            key={idx}
-          />
-        )}
-      </DiceDiv>
+      <Dice
+        dice={props.dice}
+        locked={props.locked}
+        handleClick={props.handleClick}
+      />
     </div>
   );
 }
@@ -26,6 +20,6 @@ export default function Giant(props) {
 Giant.propTypes = {
   hoard: PropTypes.number,
   val: PropTypes.array,
-  locked: PropTypes.bool,
+  locked: PropTypes.array,
   handleClick: PropTypes.func
 }

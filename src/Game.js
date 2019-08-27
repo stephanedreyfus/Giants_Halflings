@@ -12,15 +12,15 @@ class Game extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      halflingDice: Array.from({ length: NUM_DICE }),
+      halflingDice: Array.from({ length: NUM_DICE }).fill(6),
       locked: Array(NUM_DICE).fill(false),
       giantDie: [5],
-      giantLock: false,
+      giantLock: [false],
       split: false,
       legendary: false,
       wagerInput: 0,
       coins: {
-        // House has unlimited funds, so this is how much you have lost to Giant
+        // House has unlimited funds, so giantHoard is how much you have lost to Giant
         giantHoard: 0,
         halflingLoot: STARTING_FUNDS,
         pot: 0,
@@ -65,22 +65,27 @@ class Game extends Component {
    * Roll dice for halflings.
    * Currently rolls individual die, locking once rolled.
    */
-  rollHalflings() {
+  rollHalflings(i) {
+    let updateLock = this.state.locked.splice();
+    updateLock[i] = true;
     this.setState(st => ({
       halflingDice: st.halflingDice.map(
         (d, i) => st.locked[i] ? d : Math.ceil(Math.random() * 6)
       ),
-      locked: st.locked[i] = true,
+      locked: updateLock,
     }));
+    // If all Halfling dice locked, run doResults(this.state.giantDie, this.state.halfLingDice)
   }
 
-  /** Roll die for Giant. */
-  rollGiant() {
+  /** Roll die for Giant.*/
+  rollGiant(i) {
+    let updateLock = this.state.giantLock.splice();
+    updateLock[i] = true;
     this.setState(st => ({
       giantDie: st.giantDie.map(
         (d, i) => st.locked[i] ? d : Math.ceil(Math.random() * 10)
       ),
-      giantLock: st.giantLock[i] = true,
+      giantLock: updateLock,
     }));
   }
 
@@ -147,7 +152,7 @@ class Game extends Component {
         />
         <Pot gold={this.state.coins.pot} />
         <Giant
-          val={this.state.giantDie}
+          dice={this.state.giantDie}
           locked={this.state.giantLock}
           handleClick={this.rollGiant}
           hoard={this.state.coins.giantHoard}
