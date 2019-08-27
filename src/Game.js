@@ -63,19 +63,25 @@ class Game extends Component {
 
   /**
    * Roll dice for halflings.
-   * Currently rolls dice and locks all.
+   * Currently rolls individual die, locking once rolled.
    */
   rollHalflings() {
     this.setState(st => ({
       halflingDice: st.halflingDice.map(
-        (d, i) => st.locked[i] ? d : Math.ceil(Math.random() * 6)),
-      locked: Array(NUM_DICE).fill(true),
+        (d, i) => st.locked[i] ? d : Math.ceil(Math.random() * 6)
+      ),
+      locked: st.locked[i] = true,
     }));
   }
 
   /** Roll die for Giant. */
   rollGiant() {
-    this.setState({ giantDie: [Math.ceil(Math.random() * 10)] });
+    this.setState(st => ({
+      giantDie: st.giantDie.map(
+        (d, i) => st.locked[i] ? d : Math.ceil(Math.random() * 10)
+      ),
+      giantLock: st.giantLock[i] = true,
+    }));
   }
 
   /**

@@ -2,19 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Die from './Die';
 
-// FIXME: since we are passed an array, even though it is only one number,
-// we should refactor so that somehow we could map to multiple dice.
-// Perhaps change to Dice element and map even though it's just one.
+// Giant currently rolls one die, but is coded to be able
+// to roll multiple if wanted.
 export default function Giant(props) {
   return (
     <div>
       <div>Giant's Hoard: {props.hoard}</div>
-      <Die
-        val={props.val[0]}
-        locked={props.locked}
-        handleClick={props.handleClick}
-        idx={0}
-      />
+      <DiceDiv>
+        {this.props.dice.map((d, idx) =>
+          <Die
+            handleClick={this.props.handleClick}
+            val={d}
+            locked={this.props.locked[idx]}
+            idx={idx}
+            key={idx}
+          />
+        )}
+      </DiceDiv>
     </div>
   );
 }
