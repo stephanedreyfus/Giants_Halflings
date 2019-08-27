@@ -3,7 +3,7 @@ import Modal from './Modal';
 import Pot from './Pot';
 import Halflings from './Halflings';
 import Giant from './Giant';
-import './Game.css';
+import { GameInfo } from './styling/GameStyle';
 
 const NUM_DICE = 2;
 const STARTING_FUNDS = 30;
@@ -122,41 +122,43 @@ class Game extends Component {
     return (
       <section className="Game">
         <div>
-            { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
+          { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
 
-            <button className="open-modal-btn" onClick={this.toggleModal}>Open Modal</button>
+          <button className="open-modal-btn" onClick={this.toggleModal}>Open Modal</button>
 
-            <Modal
-              className="modal"
-              show={this.state.isShowing}
-              close={this.anteUp}
-              baseGold={this.STARTING_FUNDS}
-            >
-              <form action="submit">
-                <label htmlFor="wager">What's your wager?</label>
-                <input
-                  name="wager"
-                  type="int-field"
-                  defaultValue={this.state.wagerInput}
-                />
-                <button onSubmit={this.anteUp}>Place Wager</button>
-              </form>
-            </Modal>
-          </div>
-          
-        <Halflings 
-          dice={this.state.halflingDice}
-          locked={this.state.locked}
-          handleClick={this.rollHalflings}
-          loot={this.state.coins.halflingLoot}
-        />
-        <Pot gold={this.state.coins.pot} />
-        <Giant
-          dice={this.state.giantDie}
-          locked={this.state.giantLock}
-          handleClick={this.rollGiant}
-          hoard={this.state.coins.giantHoard}
-        />
+          <Modal
+            className="modal"
+            show={this.state.isShowing}
+            close={this.anteUp}
+            baseGold={this.STARTING_FUNDS}
+          >
+            <form action="submit">
+              <label htmlFor="wager">What's your wager?</label>
+              <input
+                name="wager"
+                type="int-field"
+                defaultValue={this.state.wagerInput}
+              />
+              <button onSubmit={this.anteUp}>Place Wager</button>
+            </form>
+          </Modal>
+        </div>
+
+        <GameInfo>  
+          <Halflings 
+            dice={this.state.halflingDice}
+            locked={this.state.locked}
+            handleClick={this.rollHalflings}
+            loot={this.state.coins.halflingLoot}
+          />
+          <Pot gold={this.state.coins.pot} />
+          <Giant
+            dice={this.state.giantDie}
+            locked={this.state.giantLock}
+            handleClick={this.rollGiant}
+            hoard={this.state.coins.giantHoard}
+          />
+        </GameInfo>
       </section>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { PotWrap } from './styling/PotStyle';
 
 /** Dislplays current wager */
 // FIXME change to stateless functional component
@@ -9,9 +10,9 @@ class Pot extends Component {
     const { gold, handleSubmit } = this.props;
     
     return(
-      <section className='pot'>
+      <PotWrap className='pot'>
         <div>Current pot holds {gold} coins.</div>
-      </section>
+      </PotWrap>
     );
   }
 }
