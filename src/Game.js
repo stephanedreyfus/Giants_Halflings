@@ -7,6 +7,7 @@ import { doScore } from './Rules';
 import { GameInfo } from './styling/GameStyle';
 
 const NUM_DICE = 2;
+const G_DICE = 1;
 const STARTING_FUNDS = 30;
 
 class Game extends Component {
@@ -15,13 +16,14 @@ class Game extends Component {
     this.state = {
       halflingDice: Array.from({ length: NUM_DICE }).fill(6),
       locked: Array(NUM_DICE).fill(false),
-      giantDie: [5],
-      giantLock: [false],
+      giantDie: Array.from({ length: G_DICE }).fill(5),
+      giantLock: Array(G_DICE).fill(false),
       split: false,
       legendary: false,
       wagerInput: 0,
       coins: {
-        // House has unlimited funds, so giantHoard is how much you have lost to Giant
+        // House has unlimited funds, so giantHoard is how much Giant has
+        // gained or lost this game.
         giantHoard: 0,
         halflingLoot: STARTING_FUNDS,
         pot: 0,
@@ -32,7 +34,6 @@ class Game extends Component {
     this.rollHalflings = this.rollHalflings.bind(this);
     this.rollGiant = this.rollGiant.bind(this);
     this.doResults = this.doResults.bind(this);
-    // this.toggleHalfLock = this.toggleHalfLock.bind(this);
   }
 
   // modal toggle
@@ -70,16 +71,39 @@ class Game extends Component {
    * @param {int} giantDie        value of Giant's roll
    * @param {int} halflingDice    sum of Halflings rolls
    */
-  doResults(giantDie, halflingDice) {
-    const hTotal = doScore.sum(halflingDice);
-    const gTotal = doScore.sum(giantDie);
+  doResults(hDice, gDice) {
+    const result = doScore.evalResults(hDice, gDice, this.state.coins.pot);
 
-    // If doScore returns -1, player gains nothing, dice reset, ante modal opens
-    this.setState(st => ({
+    if (result > -1) {
+      this.setState(st => ({
+        coins: {
+          giantHoard: st.coins.giantHoard -= result,
+          halfLingLoot: st.coins.halflingLoot += result,
+          pot: 0,
+        },
+        locked: Array(NUM_DICE).fill(false),
+        giantLock: Array(G_DICE).fill(false)
+      }));
+    } else {
+      this.setState(st => ({
+        coins: {
+          ...st.coins,
+          giantHoard: st.coins.giantHoard += st.coins.pot,
+          pot: 0,
+        },
+        locked: Array(NUM_DICE).fill(false),
+        giantLock: Array(G_DICE).fill(false)
+      }));
+    }
 
-      locked: Array(NUM_DICE).fill(false),
-    }));
-    this.anteUp();
+    if (this.state.coins.halflingLoot <= 0) {
+      // FIXME Pop up loss modal
+      console.log("You lose! Play gain?");
+    } else {
+      this.anteUp();
+    }
+
+    return result;
   }
 
   /**
@@ -115,7 +139,7 @@ class Game extends Component {
     }));
   }
 
-
+  // FIXME There is not restart function yet!
   /** Renders modal with loss message and restart button. */
   restartModal() {
     return (

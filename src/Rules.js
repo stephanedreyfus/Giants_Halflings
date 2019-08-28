@@ -20,8 +20,9 @@ class Rules {
  * @param {int} gold
  */
 class Score extends Rules {
-  evalResults(dice, knee, pot) {
-    const halflings = this.sum(dice);
+  evalResults(hDice, gDice, pot) {
+    const halflings = this.sum(hDice);
+    const knee = this.sum(gDice)
     const threeToOne = [7, 8, 9];
     const twoToOne = [4, 5, 6];
     const oneToOne = [2, 3];
