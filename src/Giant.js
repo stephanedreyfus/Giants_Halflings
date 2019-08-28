@@ -9,6 +9,7 @@ export default function Giant(props) {
   return (
     <GiantWrap>
       <div>Giant's Hoard: {props.hoard}</div>
+      <p>The Knee is:</p>
       <Dice
         dice={props.dice}
         locked={props.locked}

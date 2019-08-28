@@ -58,6 +58,8 @@ class Game extends Component {
         halflingLoot: (st.coins.halflingLoot - gold),
       }
     }));
+    // Since Giant is the house it is currently rolled automatically upon wager.
+    this.rollGiant();
     this.toggleModal();
   }
 
@@ -83,7 +85,7 @@ class Game extends Component {
     updateLock[i] = true;
     this.setState(st => ({
       giantDie: st.giantDie.map(
-        (d, i) => st.locked[i] ? d : Math.ceil(Math.random() * 10)
+        (d, i) => st.giantLock[i] ? d : Math.ceil(Math.random() * 10)
       ),
       giantLock: updateLock,
     }));
@@ -121,6 +123,22 @@ class Game extends Component {
   render() {
     return (
       <section className="Game">
+        <GameInfo>  
+          <Halflings 
+            dice={this.state.halflingDice}
+            locked={this.state.locked}
+            handleClick={this.rollHalflings}
+            loot={this.state.coins.halflingLoot}
+          />
+          <Pot gold={this.state.coins.pot} />
+          <Giant
+            dice={this.state.giantDie}
+            locked={this.state.giantLock}
+            handleClick={this.rollGiant}
+            hoard={this.state.coins.giantHoard}
+          />
+        </GameInfo>
+
         <div>
           { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
 
@@ -143,22 +161,6 @@ class Game extends Component {
             </form>
           </Modal>
         </div>
-
-        <GameInfo>  
-          <Halflings 
-            dice={this.state.halflingDice}
-            locked={this.state.locked}
-            handleClick={this.rollHalflings}
-            loot={this.state.coins.halflingLoot}
-          />
-          <Pot gold={this.state.coins.pot} />
-          <Giant
-            dice={this.state.giantDie}
-            locked={this.state.giantLock}
-            handleClick={this.rollGiant}
-            hoard={this.state.coins.giantHoard}
-          />
-        </GameInfo>
       </section>
     );
   }

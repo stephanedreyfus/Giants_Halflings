@@ -4,6 +4,6 @@ import styled from 'styled-components';
 export const GameInfo = styled.div`
   text-align: center;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   padding: 1em;
 `;
