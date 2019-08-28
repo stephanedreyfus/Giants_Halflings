@@ -3,6 +3,7 @@ import Modal from './Modal';
 import Pot from './Pot';
 import Halflings from './Halflings';
 import Giant from './Giant';
+import { doScore } from './Rules';
 import { GameInfo } from './styling/GameStyle';
 
 const NUM_DICE = 2;
@@ -30,8 +31,8 @@ class Game extends Component {
     this.anteUp = this.anteUp.bind(this);
     this.rollHalflings = this.rollHalflings.bind(this);
     this.rollGiant = this.rollGiant.bind(this);
+    this.doResults = this.doResults.bind(this);
     // this.toggleHalfLock = this.toggleHalfLock.bind(this);
-    // this.doResults = this.doResults.bind(this);
   }
 
   // modal toggle
@@ -50,7 +51,7 @@ class Game extends Component {
    * @param {int} gold    Amount wagered.
    */
   anteUp(evt, gold) {
-    evt.preventDefault();
+    if (evt) evt.preventDefault();
     this.setState(st => ({
       coins: {
         ...st.coins,
@@ -64,19 +65,42 @@ class Game extends Component {
   }
 
   /**
+   * Takes in rolls and determines increase or decrease in coins depending
+   * on rules and payout ratios.
+   * @param {int} giantDie        value of Giant's roll
+   * @param {int} halflingDice    sum of Halflings rolls
+   */
+  doResults(giantDie, halflingDice) {
+    const hTotal = doScore.sum(halflingDice);
+    const gTotal = doScore.sum(giantDie);
+
+    // If doScore returns -1, player gains nothing, dice reset, ante modal opens
+    this.setState(st => ({
+
+      locked: Array(NUM_DICE).fill(false),
+    }));
+    this.anteUp();
+  }
+
+  /**
    * Roll dice for halflings.
    * Currently rolls individual die, locking once rolled.
    */
   rollHalflings(i) {
-    let updateLock = this.state.locked.splice();
-    updateLock[i] = true;
-    this.setState(st => ({
-      halflingDice: st.halflingDice.map(
-        (d, i) => st.locked[i] ? d : Math.ceil(Math.random() * 6)
-      ),
-      locked: updateLock,
-    }));
+    if (!this.state.locked[i]) {
+      let updateLock = this.state.locked.slice();
+      updateLock[i] = true;
+      let updateDie = this.state.halflingDice.slice();
+      updateDie[i] = Math.ceil(Math.random() * 6);
+      this.setState(() => ({
+        halflingDice: updateDie,
+        locked: updateLock,
+      }));
+    }
     // If all Halfling dice locked, run doResults(this.state.giantDie, this.state.halfLingDice)
+    if (this.state.locked.every(i => i === true)) {
+      this.doResults(this.state.giantDie, this.state.halflingDice);
+    }
   }
 
   /** Roll die for Giant.*/
@@ -91,20 +115,6 @@ class Game extends Component {
     }));
   }
 
-  /**
-   * Takes in rolls and determines increase or decrease in coins depending
-   * on rules and payout ratios.
-   * @param {int} giantDie        value of Giant's roll
-   * @param {int} halflingDice    sum of Halflings rolls
-   */
-  // doResults(giantDie, halflingDice) {
-
-  //   this.setState(st => ({
-
-  //     locked: Array(NUM_DICE).fill(false),
-  //   }));
-  //   this.anteUp();
-  // }
 
   /** Renders modal with loss message and restart button. */
   restartModal() {

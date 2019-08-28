@@ -9,8 +9,8 @@ class Rules {
     Object.assign(this, params);
   }
   
-  sum(halflingDice) {
-    return halflingDice.reduce((prev, curr)=> prev + curr);
+  sum(dice) {
+    return dice.reduce((prev, curr)=> prev + curr);
   }
 }
 

@@ -7,11 +7,10 @@ import { PotWrap } from './styling/PotStyle';
 class Pot extends Component {
 
   render() {
-    const { gold, handleSubmit } = this.props;
     
     return(
       <PotWrap className='pot'>
-        <div>Current pot holds {gold} coins.</div>
+        <div>Current pot holds {this.props.gold} coins.</div>
       </PotWrap>
     );
   }
