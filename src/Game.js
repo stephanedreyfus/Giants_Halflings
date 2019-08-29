@@ -3,7 +3,7 @@ import Modal from './Modal';
 import Pot from './Pot';
 import Halflings from './Halflings';
 import Giant from './Giant';
-import { writtenRules } from './writtenRules';
+import WrittenRules from './WrittenRules';
 import { doScore } from './Rules';
 import { GameInfo } from './styling/GameStyle';
 
@@ -30,7 +30,6 @@ class Game extends Component {
         pot: 0,
       },
       isShowing: false,
-      showRules: false,
     };
     this.anteUp = this.anteUp.bind(this);
     this.rollHalflings = this.rollHalflings.bind(this);
@@ -179,7 +178,7 @@ class Game extends Component {
         show={this.state.isShowing}
         close={this.toggleModal}
       >
-        { writtenRules }
+        <WrittenRules />
       </Modal>
     );
   }
@@ -214,7 +213,7 @@ class Game extends Component {
             close={this.toggleModal}
             baseGold={STARTING_FUNDS}
           >
-           { writtenRules } 
+           <WrittenRules /> 
           </Modal>
         </div>
       </section>
