@@ -203,8 +203,6 @@ class Game extends Component {
         </GameInfo>
 
         <div>
-          { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
-
           <button className="open-modal-btn" onClick={this.toggleModal}>Show Rules</button>
 
           <Modal
@@ -233,3 +231,6 @@ export default Game;
               />
               <button onSubmit={this.anteUp}>Place Wager</button>
             </form> }*/
+
+// Removed ability for Modal to be dismissed by clicking on background.
+//  { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
