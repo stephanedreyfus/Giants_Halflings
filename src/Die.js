@@ -5,7 +5,8 @@ import { DieBtn } from './styling/DiceStyle';
 export default function Die(props) {
   return(
     <DieBtn
-      onClick={() => props.handleClick(props.idx)}>
+      onClick={() => props.handleClick(props.idx)}
+      locked={ props.locked }>
       { props.val }
     </DieBtn>
   )

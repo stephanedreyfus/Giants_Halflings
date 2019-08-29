@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const DiceDiv = styled.div`
   font-size: 1.5em;
   text-align: center;
-  color: palevioletred;
 `;
 
 // Styled button that is a "Die"
@@ -16,7 +15,9 @@ export const DieBtn = styled.button`
   min-width: 57.02px;
   font-family: monospace;
   font-weight: bold;
-  background-color: ${props => props.locked ? "darkred" : "red"};
+  background: ${props => props.locked ? "darkred" : "red"};
+  cursor: pointer;
   color: white;
   margin-right: 1em;
-`;
+  `;
+  
