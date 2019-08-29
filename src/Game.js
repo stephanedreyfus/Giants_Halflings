@@ -36,6 +36,13 @@ class Game extends Component {
     this.doResults = this.doResults.bind(this);
   }
 
+  /** If all dice locked, calculate the results. */
+  componentDidUpdate() {
+    if (this.state.locked.every(i => i === true) && this.state.giantLock.every(i => i === true)) {
+      this.doResults(this.state.giantDie, this.state.halflingDice);
+    }
+  }
+
   // modal toggle
   toggleModal = () => {
     this.setState(
@@ -70,6 +77,7 @@ class Game extends Component {
    * on rules and payout ratios.
    * @param {int} giantDie        value of Giant's roll
    * @param {int} halflingDice    sum of Halflings rolls
+   * => calculated result value.
    */
   doResults(hDice, gDice) {
     const result = doScore.evalResults(hDice, gDice, this.state.coins.pot);
@@ -109,6 +117,7 @@ class Game extends Component {
   /**
    * Roll dice for halflings.
    * Currently rolls individual die, locking once rolled.
+   * => value of rolled die.
    */
   rollHalflings(i) {
     if (!this.state.locked[i]) {
@@ -121,13 +130,14 @@ class Game extends Component {
         locked: updateLock,
       }));
     }
-    // If all Halfling dice locked, run doResults(this.state.giantDie, this.state.halfLingDice)
-    if (this.state.locked.every(i => i === true)) {
-      this.doResults(this.state.giantDie, this.state.halflingDice);
-    }
+    return this.state.halflingDice[i];
   }
 
-  /** Roll die for Giant.*/
+  /**
+   * Roll die for Giant.
+   * If there was more than one, all would be rolled.
+   * => array of dice values.
+  */
   rollGiant(i) {
     let updateLock = this.state.giantLock.splice();
     updateLock[i] = true;
@@ -137,6 +147,7 @@ class Game extends Component {
       ),
       giantLock: updateLock,
     }));
+    return this.state.giantDie;
   }
 
   // FIXME There is not restart function yet!
