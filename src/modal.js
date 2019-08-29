@@ -9,7 +9,7 @@ const Modal = (props) => {
     btnText = 'CONTINUE',
     header = 'Welcome to Giants and Halflings!',
     baseGold,
-    children = `You start with ${baseGold}`,
+    message = `You start with ${baseGold} gold pieces.`,
     show,
     close,
   } = props;
@@ -22,11 +22,11 @@ const Modal = (props) => {
           opacity: show ? '1' : '0'
         }}>
         <div className="modal-header">
-          <h3>{header}r</h3>
+          <h3>{header}</h3>
         </div>
         <div className="modal-body">
           <div>
-            {children}
+            {props.children || message}
           </div>
         </div>
         <div className="modal-footer">
@@ -42,7 +42,7 @@ Modal.propTypes = {
   header: PropTypes.string,
   show: PropTypes.bool,
   close: PropTypes.func,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   baseGold: PropTypes.number,
 }
 

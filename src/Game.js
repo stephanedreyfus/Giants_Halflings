@@ -3,6 +3,7 @@ import Modal from './Modal';
 import Pot from './Pot';
 import Halflings from './Halflings';
 import Giant from './Giant';
+import { writtenRules } from './writtenRules';
 import { doScore } from './Rules';
 import { GameInfo } from './styling/GameStyle';
 
@@ -28,7 +29,8 @@ class Game extends Component {
         halflingLoot: STARTING_FUNDS,
         pot: 0,
       },
-      isShowing: false
+      isShowing: false,
+      showRules: false,
     };
     this.anteUp = this.anteUp.bind(this);
     this.rollHalflings = this.rollHalflings.bind(this);
@@ -168,6 +170,20 @@ class Game extends Component {
     );
   }
 
+  /** Renders modal with rules */
+  rulesModal() {
+    return (
+      <Modal
+        btnText="Back to Game"
+        className="modal"
+        show={this.state.isShowing}
+        close={this.toggleModal}
+      >
+        { writtenRules }
+      </Modal>
+    );
+  }
+
   render() {
     return (
       <section className="Game">
@@ -190,23 +206,15 @@ class Game extends Component {
         <div>
           { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
 
-          <button className="open-modal-btn" onClick={this.toggleModal}>Open Modal</button>
+          <button className="open-modal-btn" onClick={this.toggleModal}>Show Rules</button>
 
           <Modal
             className="modal"
             show={this.state.isShowing}
-            close={this.anteUp}
-            baseGold={this.STARTING_FUNDS}
+            close={this.toggleModal}
+            baseGold={STARTING_FUNDS}
           >
-            <form action="submit">
-              <label htmlFor="wager">What's your wager?</label>
-              <input
-                name="wager"
-                type="int-field"
-                defaultValue={this.state.wagerInput}
-              />
-              <button onSubmit={this.anteUp}>Place Wager</button>
-            </form>
+           { writtenRules } 
           </Modal>
         </div>
       </section>
@@ -215,3 +223,14 @@ class Game extends Component {
 }
 
 export default Game;
+
+// This was a child passed to Modal. Needs to be made it's own.
+/*{ <form action="submit">
+              <label htmlFor="wager">What's your wager?</label>
+              <input
+                name="wager"
+                type="int-field"
+                defaultValue={this.state.wagerInput}
+              />
+              <button onSubmit={this.anteUp}>Place Wager</button>
+            </form> }*/
