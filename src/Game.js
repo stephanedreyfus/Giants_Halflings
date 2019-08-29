@@ -38,7 +38,10 @@ class Game extends Component {
 
   /** If all dice locked, calculate the results. */
   componentDidUpdate() {
-    if (this.state.locked.every(i => i === true) && this.state.giantLock.every(i => i === true)) {
+    if (
+      this.state.locked.every(i => i === true) &&
+      this.state.giantLock.every(i => i === true)
+      ) {
       this.doResults(this.state.giantDie, this.state.halflingDice);
     }
   }
