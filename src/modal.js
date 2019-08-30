@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Modal.css';
+import { CloseX, HeadText, ModWrapper } from './styling/ModalStyle';
 
 // FIXME Refactor into styled components.
 
@@ -8,21 +9,22 @@ const Modal = (props) => {
   const {
     btnText = 'CONTINUE',
     header = 'Welcome to Giants and Halflings!',
-    baseGold,
-    message = `You start with ${baseGold} gold pieces.`,
+    gold,
+    message = `You start with ${gold} gold pieces.`,
     show,
     close,
   } = props;
 
   return (
     <div>
-      <div className="modal-wrapper"
+      <ModWrapper
         style={{
-          transform: show ? 'translateY(0vh)' : 'translateY(-120vh)',
+          transform: show ? 'translateY(-20vh)' : 'translateY(-120vh)',
           opacity: show ? '1' : '0'
         }}>
         <div className="modal-header">
-          <h3>{header}</h3>
+          <HeadText>{header}</HeadText>
+          <CloseX onClick={close}>&times;</CloseX>
         </div>
         <div className="modal-body">
           <div>
@@ -32,7 +34,7 @@ const Modal = (props) => {
         <div className="modal-footer">
           <button className="btn-continue" onClick={close}>{btnText}</button>
         </div> 
-      </div>
+      </ModWrapper>
     </div>
   );
 };
@@ -48,7 +50,7 @@ Modal.propTypes = {
 
 export default Modal;
 
-// FIXME Use when you are clear on what modal will be displaying.
+// EVENTUALLY Use when you are clear on what modal will be displaying.
 // An object that could be one of many types
 // optionalProp: PropTypes.oneOfType([
 //   PropTypes.string,

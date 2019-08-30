@@ -1,11 +1,10 @@
 import React from 'react';
+import { RulesText } from './styling/ModalStyle';
 
-// FIXME FInd a way to have this left justified only when
-// this particular information is passed as a child.
 const WrittenRules = () => {
 
   return (
-    <div>
+    <RulesText>
       <p>
         <b>Hello There!</b><br/>
         Halflings and Giants is a game of chance where you,
@@ -25,7 +24,7 @@ const WrittenRules = () => {
         of the Knee.
       </p>
 
-      <b>Intriguing events!</b>
+      <b>Intriguing events:</b>
       <ul>
         <li>
           If the Giant rolls a 1, this is the "Kick." The
@@ -62,7 +61,7 @@ const WrittenRules = () => {
         <li>If the Knee is 7-9, house pays 3:1</li>
         <li>If the Knee is 10, house pays 5:1</li>
       </ul>
-    </div>
+    </RulesText>
   );
 };
 

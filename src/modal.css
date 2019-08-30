@@ -1,11 +1,4 @@
-.modal-wrapper {
-    background: white;
-    border: 1px solid #d0cccc;
-    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.17);
-    margin: 4em auto 0;
-    transition: all .8s;
-    width: 60%;
-}
+/* FIXME Remove extranneous css and port used css to styled components. */
 
 .modal-header {
     background: #263238;
@@ -13,13 +6,6 @@
     line-height: 40px;
     padding: 5px 20px;
     text-align: right;
-}
-
-.modal-header h3 {
-    color: white;
-    float: left;
-    margin: 0;
-    padding: 0;
 }
 
 .modal-body {

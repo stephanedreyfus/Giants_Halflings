@@ -30,6 +30,12 @@ class Game extends Component {
         pot: 0,
       },
       isShowing: false,
+      modalContent: {
+        btnText: 'CONTINUE',
+        header: 'Welcome to Giants and Halflings!',
+        gold: STARTING_FUNDS,
+        message: `You start with ${STARTING_FUNDS} gold pieces.`,
+      }
     };
     this.anteUp = this.anteUp.bind(this);
     this.rollHalflings = this.rollHalflings.bind(this);
@@ -56,7 +62,8 @@ class Game extends Component {
 
   /**
    * Prompts player to place a bet into the 'pot',
-   * Accepts integer input, locks pot and allows for Halfling roll.
+   * Accepts integer input, locks pot, rolls for Giant,
+   * and allows for Halfling roll.
    * Pot value set to wager.
    * Halflings coins decreased by wager.
    * 
@@ -71,7 +78,7 @@ class Game extends Component {
         halflingLoot: (st.coins.halflingLoot - gold),
       }
     }));
-    // Since Giant is the house it is currently rolled automatically upon wager.
+    // Giant is currently rolled automatically upon wager.
     this.rollGiant();
     this.toggleModal();
   }
@@ -162,7 +169,7 @@ class Game extends Component {
         className="modal"
         show={this.state.isShowing}
         close={this.restart}
-        baseGold={0}
+        gold={0}
       >
         The Giant has won and you are out of gold. Click below to restart.
       </Modal>
@@ -206,10 +213,11 @@ class Game extends Component {
           <button className="open-modal-btn" onClick={this.toggleModal}>Show Rules</button>
 
           <Modal
+            btnText="Back to Game"
             className="modal"
             show={this.state.isShowing}
             close={this.toggleModal}
-            baseGold={STARTING_FUNDS}
+            gold={STARTING_FUNDS}
           >
            <WrittenRules /> 
           </Modal>
