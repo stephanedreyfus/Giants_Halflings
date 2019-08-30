@@ -121,7 +121,6 @@ class Game extends Component {
     }
 
     if (this.state.coins.halflingLoot <= 0) {
-      // FIXME Pop up loss modal
       this.lossModal();
     } else {
       this.wagerModal();
@@ -166,24 +165,9 @@ class Game extends Component {
     return this.state.giantDie;
   }
 
-  // FIXME to be a modal info changer
-  /** Renders modal with loss message and restart button. */
-  // restartModal() {
-  //   return (
-  //     <Modal
-  //       className="modal"
-  //       show={this.state.isShowing}
-  //       close={this.restart}
-  //       gold={0}
-  //     >
-  //       The Giant has won and you are out of gold. Click below to restart.
-  //     </Modal>
-  //   );
-  // }
-
   /** Sets state to display rules modal iformation*/
   rulesModal() {
-    this.setState((st) => ({
+    this.setState(st => ({
       modalContent: {
         ...st.modalContent,
         message: <WrittenRules />,
@@ -196,7 +180,7 @@ class Game extends Component {
 
   /** Sets state to display wager modal information*/
   wagerModal() {
-    this.setState((st) =>({
+    this.setState(st =>({
       modalContent: {
         ...st.modalContent,
         header: "Time to Ante Up!",
@@ -207,6 +191,22 @@ class Game extends Component {
     }));
     this.toggleModal();
     return this.state.modalContent.btnText;
+  }
+
+  // FIXME Create reset method
+  /** Sets state to display loss modal information */
+  lossModal() {
+    this.setState(st => ({
+      modalContent: {
+        ...st.modalContent,
+        header: "You've Lost It All!",
+        btnText: "New Game",
+        message: "The Giant has won and you are out of gold. Click below to restart.",
+        // close: this.reset,
+      }
+    }));
+    this.toggleModal();
+    return this.state.modalContent.header;
   }
 
   render() {
@@ -249,6 +249,3 @@ class Game extends Component {
 }
 
 export default Game;
-
-// Removed ability for Modal to be dismissed by clicking on background.
-//  { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
