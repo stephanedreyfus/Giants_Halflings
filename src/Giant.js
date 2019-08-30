@@ -5,7 +5,7 @@ import { GiantWrap } from './styling/GiantStyle';
 
 // Giant currently rolls one die, but is coded to be able
 // to roll multiple if wanted.
-export default function Giant(props) {
+const Giant = (props) => {
   return (
     <GiantWrap>
       <div>Giant's Hoard: {props.hoard}</div>
@@ -25,3 +25,5 @@ Giant.propTypes = {
   locked: PropTypes.array,
   handleClick: PropTypes.func
 }
+
+export default Giant;

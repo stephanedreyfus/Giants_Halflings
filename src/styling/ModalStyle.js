@@ -22,15 +22,15 @@ export const HeadText = styled.h3`
 
 // export const Footer
 
-export const RulesText = styled.div`
-  text-align: left;
+export const CloseX = styled.button`
+border: 0;
+self-align: right;
+color: white;
+background: #263238;
+font-size: 1.7em;
+cursor: pointer;
 `;
 
-export const CloseX = styled.button`
-  border: 0;
-  self-align: right;
-  color: white;
-  background: #263238;
-  font-size: 1.7em;
-  cursor: pointer;
+export const RulesText = styled.div`
+  text-align: left;
 `;

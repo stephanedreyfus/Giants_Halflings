@@ -21,7 +21,6 @@ class Game extends Component {
       giantLock: Array(G_DICE).fill(false),
       split: false,
       legendary: false,
-      wagerInput: 0,
       coins: {
         // House has unlimited funds, so giantHoard is how much Giant has
         // gained or lost this game.
@@ -60,6 +59,7 @@ class Game extends Component {
     );
   }
 
+  // FIXME anteUp has to be passed down to <Wager /> form.
   /**
    * Prompts player to place a bet into the 'pot',
    * Accepts integer input, locks pot, rolls for Giant,
@@ -69,8 +69,7 @@ class Game extends Component {
    * 
    * @param {int} gold    Amount wagered.
    */
-  anteUp(evt, gold) {
-    if (evt) evt.preventDefault();
+  anteUp(gold) {
     this.setState(st => ({
       coins: {
         ...st.coins,
@@ -228,17 +227,6 @@ class Game extends Component {
 }
 
 export default Game;
-
-// This was a child passed to Modal. Needs to be made it's own.
-/*{ <form action="submit">
-              <label htmlFor="wager">What's your wager?</label>
-              <input
-                name="wager"
-                type="int-field"
-                defaultValue={this.state.wagerInput}
-              />
-              <button onSubmit={this.anteUp}>Place Wager</button>
-            </form> }*/
 
 // Removed ability for Modal to be dismissed by clicking on background.
 //  { this.state.isShowing ? <div onClick={this.toggleModal} className="back-drop"></div> : null }
