@@ -58,7 +58,7 @@ class Game extends Component {
     }
   }
 
-  // modal toggle
+  //** modal toggle */
   toggleModal = () => {
     this.setState(
       st => ({isShowing: !st.isShowing})

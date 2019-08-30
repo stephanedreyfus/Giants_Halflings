@@ -15,26 +15,26 @@ class Wager extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // FIXME Error handling not functioning
   handleChange(evt) {
     this.setState({val: evt.target.value});
-    console.log("What did I type?", evt.target.value)
-    console.log("What is val?", this.state.val)
-    console.log("Is is a number?", Number.isInteger(this.state.val))
-    if (this.state.val > this.props.gold || Number.isInteger(this.state.val)) {
-      this.setState(() => ({
-        error: true
-      }));
-      console.log("Error set to true")
-    } else {
-      this.setState(() => ({
-        error: false
-      }));
-      console.log("Error set to false")
-    }
+    // console.log("What did I type?", evt.target.value)
+    // console.log("What is val?", this.state.val)
+    // console.log("Is is a number?", Number.isInteger(this.state.val))
+    // if (this.state.val > this.props.gold || Number.isInteger(this.state.val)) {
+    //   this.setState(() => ({
+    //     error: true
+    //   }));
+    //   console.log("Error set to true")
+    // } else {
+    //   this.setState(() => ({
+    //     error: false
+    //   }));
+    //   console.log("Error set to false")
+    // }
   }
 
   handleSubmit(evt) {

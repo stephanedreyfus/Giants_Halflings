@@ -9,7 +9,7 @@ class Pot extends Component {
   render() {
     
     return(
-      <PotWrap className='pot'>
+      <PotWrap>
         <div>Current pot holds {this.props.gold} coins.</div>
       </PotWrap>
     );

@@ -51,5 +51,5 @@ export const WagerForm = styled.form`
 
 export const WagerError = styled.div`
   padding: 1em 0em 0em;
-  color: ${props => props.error ? "white" : "black"};
+  color: ${props => props.error ? "black" : "white"};
 `
