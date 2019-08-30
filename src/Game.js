@@ -34,12 +34,14 @@ class Game extends Component {
         header: 'Welcome to Giants and Halflings!',
         gold: STARTING_FUNDS,
         message: `You start with ${STARTING_FUNDS} gold pieces.`,
+        close: this.toggleModal,
       }
     };
     this.anteUp = this.anteUp.bind(this);
     this.rollHalflings = this.rollHalflings.bind(this);
     this.rollGiant = this.rollGiant.bind(this);
     this.doResults = this.doResults.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   /** If all dice locked, calculate the results. */
@@ -116,9 +118,9 @@ class Game extends Component {
 
     if (this.state.coins.halflingLoot <= 0) {
       // FIXME Pop up loss modal
-      console.log("You lose! Play gain?");
+      this.chooseModal('loss');
     } else {
-      this.anteUp();
+      this.chooseModal('wager');
     }
 
     return result;
@@ -209,16 +211,17 @@ class Game extends Component {
         </GameInfo>
 
         <div>
+          <button className="open-modal-btn" onClick={this.toggleModal}>Play Time!</button>
           <button className="open-modal-btn" onClick={this.toggleModal}>Show Rules</button>
 
           <Modal
-            btnText="Back to Game"
             className="modal"
+            btnText={this.state.modalContent.btnText}
             show={this.state.isShowing}
-            close={this.toggleModal}
-            gold={STARTING_FUNDS}
+            gold={this.state.modalContent.gold}
+            close={this.state.modalContent.close}
           >
-           <WrittenRules /> 
+           {this.state.modalContent.message}
           </Modal>
         </div>
       </section>
