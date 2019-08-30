@@ -33,4 +33,23 @@ cursor: pointer;
 
 export const RulesText = styled.div`
   text-align: left;
-`;
+  `;
+  
+  export const WagerButton = styled.button`
+  background: coral;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+`
+
+export const WagerForm = styled.form`
+  display: flex;
+  justify-content: center;
+`
+
+export const WagerError = styled.div`
+  padding: 1em 0em 0em;
+  color: ${props => props.error ? "white" : "black"};
+`

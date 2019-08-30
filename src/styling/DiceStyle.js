@@ -19,5 +19,5 @@ export const DieBtn = styled.button`
   cursor: pointer;
   color: white;
   margin-right: 1em;
-  `;
+`;
   

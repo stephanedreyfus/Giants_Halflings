@@ -9,7 +9,7 @@ const Modal = (props) => {
   const {
     btnText = 'CONTINUE',
     header = 'Welcome to Giants and Halflings!',
-    gold,
+    gold = 0,
     message = `You start with ${gold} gold pieces.`,
     show,
     close,
@@ -42,6 +42,7 @@ const Modal = (props) => {
 Modal.propTypes = {
   btnText: PropTypes.string,
   header: PropTypes.string,
+  gold: PropTypes.number,
   show: PropTypes.bool,
   close: PropTypes.func,
   children: PropTypes.node,

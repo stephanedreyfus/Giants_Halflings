@@ -4,6 +4,7 @@ import Pot from './Pot';
 import Halflings from './Halflings';
 import Giant from './Giant';
 import WrittenRules from './WrittenRules';
+import Wager from './Wager';
 import { doScore } from './Rules';
 import { GameInfo } from './styling/GameStyle';
 
@@ -37,11 +38,14 @@ class Game extends Component {
         close: this.toggleModal,
       }
     };
-    this.anteUp = this.anteUp.bind(this);
+    this.wager = this.wager.bind(this);
     this.rollHalflings = this.rollHalflings.bind(this);
     this.rollGiant = this.rollGiant.bind(this);
     this.doResults = this.doResults.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.wagerModal = this.wagerModal.bind(this);
+    this.rulesModal = this.rulesModal.bind(this);
+    this.lossModal = this.lossModal.bind(this);
   }
 
   /** If all dice locked, calculate the results. */
@@ -61,9 +65,8 @@ class Game extends Component {
     );
   }
 
-  // FIXME anteUp has to be passed down to <Wager /> form.
   /**
-   * Prompts player to place a bet into the 'pot',
+   * Allows player to place a bet into the 'pot',
    * Accepts integer input, locks pot, rolls for Giant,
    * and allows for Halfling roll.
    * Pot value set to wager.
@@ -71,7 +74,7 @@ class Game extends Component {
    * 
    * @param {int} gold    Amount wagered.
    */
-  anteUp(gold) {
+  wager(gold) {
     this.setState(st => ({
       coins: {
         ...st.coins,
@@ -80,7 +83,8 @@ class Game extends Component {
       }
     }));
     // Giant is currently rolled automatically upon wager.
-    this.rollGiant();
+    // Index is zero since we are currenly using only one die.
+    this.rollGiant(0);
     this.toggleModal();
   }
 
@@ -118,9 +122,9 @@ class Game extends Component {
 
     if (this.state.coins.halflingLoot <= 0) {
       // FIXME Pop up loss modal
-      this.chooseModal('loss');
+      this.lossModal();
     } else {
-      this.chooseModal('wager');
+      this.wagerModal();
     }
 
     return result;
@@ -162,33 +166,47 @@ class Game extends Component {
     return this.state.giantDie;
   }
 
-  // FIXME There is not restart function yet!
+  // FIXME to be a modal info changer
   /** Renders modal with loss message and restart button. */
-  restartModal() {
-    return (
-      <Modal
-        className="modal"
-        show={this.state.isShowing}
-        close={this.restart}
-        gold={0}
-      >
-        The Giant has won and you are out of gold. Click below to restart.
-      </Modal>
-    );
+  // restartModal() {
+  //   return (
+  //     <Modal
+  //       className="modal"
+  //       show={this.state.isShowing}
+  //       close={this.restart}
+  //       gold={0}
+  //     >
+  //       The Giant has won and you are out of gold. Click below to restart.
+  //     </Modal>
+  //   );
+  // }
+
+  /** Sets state to display rules modal iformation*/
+  rulesModal() {
+    this.setState((st) => ({
+      modalContent: {
+        ...st.modalContent,
+        message: <WrittenRules />,
+        btnText: "Return to Game",
+      }
+    }));
+    this.toggleModal();
+    return this.state.modalContent.btnText;
   }
 
-  /** Renders modal with rules */
-  rulesModal() {
-    return (
-      <Modal
-        btnText="Back to Game"
-        className="modal"
-        show={this.state.isShowing}
-        close={this.toggleModal}
-      >
-        <WrittenRules />
-      </Modal>
-    );
+  /** Sets state to display wager modal information*/
+  wagerModal() {
+    this.setState((st) =>({
+      modalContent: {
+        ...st.modalContent,
+        header: "Time to Ante Up!",
+        message: <Wager wager={this.wager} gold={this.state.coins.halflingLoot}/>,
+        btnText: "Place your bet!",
+        close: this.wager,
+      }
+    }));
+    this.toggleModal();
+    return this.state.modalContent.btnText;
   }
 
   render() {
@@ -211,12 +229,13 @@ class Game extends Component {
         </GameInfo>
 
         <div>
-          <button className="open-modal-btn" onClick={this.toggleModal}>Play Time!</button>
-          <button className="open-modal-btn" onClick={this.toggleModal}>Show Rules</button>
+          <button className="open-modal-btn" onClick={this.wagerModal}>Play Time!</button>
+          <button className="open-modal-btn" onClick={this.rulesModal}>Show Rules</button>
 
           <Modal
             className="modal"
             btnText={this.state.modalContent.btnText}
+            header={this.state.modalContent.header}
             show={this.state.isShowing}
             gold={this.state.modalContent.gold}
             close={this.state.modalContent.close}
