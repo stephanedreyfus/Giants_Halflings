@@ -33,15 +33,16 @@ Knee is 10, house pays 5:1
 # Tasks
 - [ ] Decide basic visual layout
 - [ ] Testing
-- [ ] `Dice` and `dice rolling`
+- [X] `Dice` and `dice rolling`
 - [ ] `Pot` tracking
 - [ ] `Payout` display and code
+- [ ] `Modal` has to move off to the left. Up and down seems to block call buttons. Div gets in the way. Maybe move to background somehow?
 - [ ] Images?
 - [ ] Wagering
-- [ ] `EVENTUALLY` Keeping track of scores: cookies? db?
+- [ ] `EVENTUALLY` Keeping track of high scores: cookies? db?
 - [ ] `EVENTUALLY` List highest amount of gold one had before loss in restart modal text.
 - [ ] `EVENTUALLY` offer option to borrow from Giant? Perhaps at a disadvantage to scoring for a time?
-- [ ] `EVENTUALLY` add ability to roll each Halfling die individually.
+- [X] `EVENTUALLY` add ability to roll each Halfling die individually.
 - [ ] `EVENTUALLY` two player version where someone can roll as Giant.
  
 # Game Flow
