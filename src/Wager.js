@@ -10,7 +10,7 @@ class Wager extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      val: 0,
+      val: 1,
       error: false,
     };
 
@@ -24,7 +24,7 @@ class Wager extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
-    if (!Number.isInteger(this.state.val)) {
+    if (this.state.val > this.props.gold) {
       this.setState(() => ({ error: true }));
     } else {
       this.setState(() => ({ error: false }));
@@ -39,11 +39,13 @@ class Wager extends Component {
           <label htmlFor="wager">What's your wager?</label>
           <input
             name="wager"
-            type="int-field"
+            type="number"
+            min="1"
+            max={this.props.gold}
             defaultValue={this.state.val}
             onChange={this.handleChange}
           />
-          <WagerButton onSubmit={this.handleSubmit}>
+          <WagerButton type="submit" onSubmit={this.handleSubmit}>
             Place Wager
           </WagerButton>
         </WagerForm>
