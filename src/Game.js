@@ -75,6 +75,7 @@ class Game extends Component {
    * @param {int} gold    Amount wagered.
    */
   wager(gold) {
+    console.log("Is gold a string?", Number.isInteger(gold));
     this.setState(st => ({
       coins: {
         ...st.coins,

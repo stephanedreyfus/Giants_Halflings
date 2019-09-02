@@ -28,7 +28,7 @@ class Wager extends Component {
       this.setState(() => ({ error: true }));
     } else {
       this.setState(() => ({ error: false }));
-      this.props.wager(this.state.val);
+      this.props.wager(parseInt(this.state.val));
     }
   }
 
