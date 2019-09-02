@@ -35,7 +35,7 @@ class Wager extends Component {
   render() {
     return(
       <div>
-        <WagerForm action="submit">
+        <WagerForm onSubmit={this.handleSubmit}>
           <label htmlFor="wager">What's your wager?</label>
           <input
             name="wager"
@@ -45,7 +45,7 @@ class Wager extends Component {
             defaultValue={this.state.val}
             onChange={this.handleChange}
           />
-          <WagerButton type="submit" onSubmit={this.handleSubmit}>
+          <WagerButton>
             Place Wager
           </WagerButton>
         </WagerForm>
