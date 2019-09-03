@@ -58,7 +58,8 @@ class Wager extends Component {
 }
 
 Wager.propTypes = {
-  wager: PropTypes.func
+  wager: PropTypes.func,
+  gold: PropTypes.number
 }
 
 export default Wager;

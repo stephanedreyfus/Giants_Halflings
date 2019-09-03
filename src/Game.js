@@ -17,9 +17,9 @@ class Game extends Component {
     super(props);
     this.state = {
       halflingDice: Array.from({ length: NUM_DICE }).fill(6),
-      locked: Array(NUM_DICE).fill(false),
+      locked: Array(NUM_DICE).fill(true),
       giantDie: Array.from({ length: G_DICE }).fill(5),
-      giantLock: Array(G_DICE).fill(false),
+      giantLock: Array(G_DICE).fill(true),
       split: false,
       legendary: false,
       coins: {
@@ -75,8 +75,8 @@ class Game extends Component {
    * @param {int} gold    Amount wagered.
    */
   wager(gold) {
-    console.log("Is gold a string?", Number.isInteger(gold));
     this.setState(st => ({
+      locked: Array(NUM_DICE).fill(false),
       coins: {
         ...st.coins,
         pot: gold,
@@ -179,6 +179,9 @@ class Game extends Component {
     return this.state.modalContent.btnText;
   }
 
+  // FIXME close and X get passed the correct function, but not the correct
+  // argument for the function, as that is added from the input field in the
+  // wager. Need to get input into these functions.
   /** Sets state to display wager modal information*/
   wagerModal() {
     this.setState(st =>({
