@@ -34,6 +34,10 @@ it('returns 2:1 reward', () => {
   expect(doScore.evalResults([3, 4], [6], 4)).toEqual(12);
 });
 
+it('returns 2:1 reward', () => {
+  expect(doScore.evalResults([3, 4], [5], 30)).toEqual(90);
+});
+
 it('returns 1:1 reward', () => {
   expect(doScore.evalResults([2, 1], [3], 15)).toEqual(30);
 });

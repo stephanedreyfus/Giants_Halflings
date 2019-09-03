@@ -52,7 +52,8 @@ class Game extends Component {
   componentDidUpdate() {
     if (
       this.state.locked.every(i => i === true) &&
-      this.state.giantLock.every(i => i === true)
+      this.state.giantLock.every(i => i === true) &&
+      this.state.coins.pot > 1
       ) {
       this.doResults(this.state.giantDie, this.state.halflingDice);
     }
@@ -97,7 +98,9 @@ class Game extends Component {
    * => calculated result value.
    */
   doResults(hDice, gDice) {
+    console.log("Do we get here? What is hDice?", hDice, "What is gDice?", gDice);
     const result = doScore.evalResults(hDice, gDice, this.state.coins.pot);
+    console.log("What were the results?", result);
 
     if (result > -1) {
       this.setState(st => ({
