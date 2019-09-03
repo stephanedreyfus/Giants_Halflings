@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 import {
   WagerButton,
   WagerForm,
-  WagerError,
 } from './styling/ModalStyle'
 
 class Wager extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      val: 1,
-      error: false,
-    };
+    this.state = { val: 1 };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,13 +19,8 @@ class Wager extends Component {
   }
 
   handleSubmit(evt) {
-    evt.preventDefault()
-    if (this.state.val > this.props.gold) {
-      this.setState(() => ({ error: true }));
-    } else {
-      this.setState(() => ({ error: false }));
-      this.props.wager(parseInt(this.state.val));
-    }
+    evt.preventDefault();
+    this.props.wager(parseInt(this.state.val));
   }
 
   render() {
@@ -49,9 +40,6 @@ class Wager extends Component {
             Place Wager
           </WagerButton>
         </WagerForm>
-        <WagerError error={this.state.error}>
-          Please enter a whole number less than or equal to {this.props.gold}
-        </WagerError>
       </div>
     );
   }

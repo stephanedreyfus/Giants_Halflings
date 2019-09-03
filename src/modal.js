@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Modal.css';
-import { CloseX, HeadText, ModWrapper } from './styling/ModalStyle';
+import { CloseX, HeadText, ModWrapper, ModButton } from './styling/ModalStyle';
 
 // FIXME Refactor into styled components.
 
@@ -32,7 +32,7 @@ const Modal = (props) => {
           </div>
         </div>
         <div className="modal-footer">
-          <button className="btn-continue" onClick={close}>{btnText}</button>
+          <ModButton className="btn-continue" onClick={close}>{btnText}</ModButton>
         </div> 
       </ModWrapper>
     </div>

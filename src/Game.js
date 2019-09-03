@@ -55,7 +55,7 @@ class Game extends Component {
       this.state.giantLock.every(i => i === true) &&
       this.state.coins.pot > 1
       ) {
-      this.doResults(this.state.giantDie, this.state.halflingDice);
+      this.doResults(this.state.halflingDice, this.state.giantDie);
     }
   }
 
@@ -78,6 +78,7 @@ class Game extends Component {
   wager(gold) {
     this.setState(st => ({
       locked: Array(NUM_DICE).fill(false),
+      giantLock: Array(G_DICE).fill(false),
       coins: {
         ...st.coins,
         pot: gold,
@@ -192,8 +193,8 @@ class Game extends Component {
         ...st.modalContent,
         header: "Time to Ante Up!",
         message: <Wager wager={this.wager} gold={this.state.coins.halflingLoot}/>,
-        btnText: "Place your bet!",
-        close: this.wager,
+        btnText: "Cancel",
+        close: this.toggleModal,
       }
     }));
     this.toggleModal();

@@ -31,25 +31,31 @@ font-size: 1.7em;
 cursor: pointer;
 `;
 
+export const ModButton = styled.button`
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  padding: 10px;
+  background-color: #1b5e20;
+  float: right;
+`;
+
 export const RulesText = styled.div`
   text-align: left;
-  `;
+`;
   
-  export const WagerButton = styled.button`
+export const WagerButton = styled.button`
   background: coral;
   border: none;
   color: white;
   cursor: pointer;
   font-weight: bold;
   outline: none;
-`
+`;
 
 export const WagerForm = styled.form`
   display: flex;
   justify-content: center;
-`
-
-export const WagerError = styled.div`
-  padding: 1em 0em 0em;
-  color: ${props => props.error ? "black" : "white"};
-`
+`;

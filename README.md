@@ -1,3 +1,5 @@
+### A work in Progress
+
 # Giants and Halflings
 ### A Game of Chance in Which Halflings Attempt to Take On a Giant
 Giants and Halflings is a game of chance created by [Jerry Holkins][1], and implemented in [a game][2] of [D&D][3] that he was ([and still is][4]) running for his friends.

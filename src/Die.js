@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DieBtn } from './styling/DiceStyle';
 
-export default function Die(props) {
+const Die = (props) => {
   return(
     <DieBtn
       onClick={() => props.handleClick(props.idx)}
@@ -18,3 +18,5 @@ Die.propTypes = {
   idx: PropTypes.number,
   val: PropTypes.number,
 };
+
+export default Die;
