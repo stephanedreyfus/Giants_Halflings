@@ -48,12 +48,14 @@ class Game extends Component {
     this.lossModal = this.lossModal.bind(this);
   }
 
+  // FIXME Problems with auto-loss due to kick.
   /** If all dice locked, calculate the results. */
   componentDidUpdate() {
     if (
-      this.state.locked.every(i => i === true) &&
+      (this.state.locked.every(i => i === true) &&
       this.state.giantLock.every(i => i === true) &&
-      this.state.coins.pot > 1
+      this.state.coins.pot >= 1) ||
+      this.state.giantDie < 2
       ) {
       this.doResults(this.state.halflingDice, this.state.giantDie);
     }

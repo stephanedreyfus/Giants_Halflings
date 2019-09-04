@@ -5,6 +5,7 @@ import { HalflingWrap } from './styling/HalflingStyle';
 
 // FIXME Force dice buttons to bottom of this div, above padding.
 const Halflings = (props) => {
+  console.log("Incoming loot prop", props.loot);
   return (
     <HalflingWrap>
       <div>Loot Thus Far: {props.loot}</div>
