@@ -44,6 +44,7 @@ This app was started using [create-react-app][8]. Stéphane Dreyfus wrote this R
 - In terminal in app folder run `npm test`
 
 <!-- How do I do an MIT license -->
+<!-- Start list of long term goals -->
 
 [1]: https://en.wikipedia.org/wiki/Jerry_Holkins
 [2]: https://www.youtube.com/watch?v=PrVPrdPpz5g&list=PLjZRIC6PMEFkWSAyAcwsiqCIbKXe9lMoF&index=16
