@@ -1,9 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Modal.css';
-import { CloseX, HeadText, ModWrapper, ModButton } from './styling/ModalStyle';
+import {
+  CloseX,
+  HeadText,
+  ModWrapper,
+  ModButton,
+  ModHeader,
+} from './styling/ModalStyle';
 
 // FIXME Refactor into styled components.
+// FIXME In Chrome Rules modal sometimes too large for screen,
+// and despite transform, covers buttons preventing click.
 
 const Modal = (props) => {
   const {
@@ -22,10 +30,10 @@ const Modal = (props) => {
           transform: show ? 'translateY(-20vh)' : 'translateY(-120vh)',
           opacity: show ? '1' : '0'
         }}>
-        <div className="modal-header">
+        <ModHeader>
           <HeadText>{header}</HeadText>
           <CloseX onClick={close}>&times;</CloseX>
-        </div>
+        </ModHeader>
         <div className="modal-body">
           <div>
             {props.children || message}

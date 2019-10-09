@@ -1,13 +1,5 @@
 /* FIXME Remove extranneous css and port used css to styled components. */
 
-.modal-header {
-    background: #263238;
-    height: 40px;
-    line-height: 40px;
-    padding: 5px 20px;
-    text-align: right;
-}
-
 .modal-body {
     padding: 10px 15px;
     text-align: center;
@@ -29,19 +21,6 @@
 
 .close-modal-btn:hover {
     color: black;
-}
-
-.btn-cancel {
-    background-color: #b71c1c;
-    float: left;
-}
-
-.back-drop {
-    background-color: rgba(48, 49, 48, 0.42);
-    height: 100%;
-    position: fixed;
-    transition: all 1.3s;
-    width: 100%;
 }
 
 .open-modal-btn {

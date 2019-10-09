@@ -9,6 +9,14 @@ export const ModWrapper = styled.div`
   width: 60%;
 `;
 
+export const ModHeader = styled.div`
+  background: #263238;
+  height: 40px;
+  line-height: 40px;
+  padding: 5px 20px;
+  text-align: right;
+`;
+
 export const HeadText = styled.h3`
   color: white;
   float: left;
