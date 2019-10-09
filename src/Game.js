@@ -66,6 +66,17 @@ class Game extends Component {
     this.setState(
       st => ({isShowing: !st.isShowing})
     );
+    // Clearing message content to reduce hidden modal size.
+    setTimeout(() => {
+      if (!this.state.isShowing) {
+        this.setState(
+          st => ({modalContent: {
+            ...st.modalContent,
+            message: 'Shortening Modal',
+          }})
+        );
+      }
+    }, 500);
   }
 
   /**
@@ -209,7 +220,7 @@ class Game extends Component {
     this.setState(st => ({
       modalContent: {
         ...st.modalContent,
-        header: "You've Lost It All!",
+        header: "You've Lost it All!",
         btnText: "New Game",
         message: "The Giant has won and you are out of gold. Click below to restart.",
         // close: this.reset,
