@@ -95,7 +95,7 @@ class Game extends Component {
       coins: {
         ...st.coins,
         pot: gold,
-        halflingLoot: (st.coins.halflingLoot - gold),
+        halflingLoot: st.coins.halflingLoot - gold,
       }
     }));
     // Giant is currently rolled automatically upon wager.
@@ -115,8 +115,10 @@ class Game extends Component {
     console.log("Do we get here? What is hDice?", hDice, "What is gDice?", gDice);
     const result = doScore.evalResults(hDice, gDice, this.state.coins.pot);
     console.log("What were the results?", result);
+    console.log("What is hLoot before state change?", this.state.coins.halflingLoot)
 
     if (result > -1) {
+      console.log("Are we in win if?");
       this.setState(st => ({
         coins: {
           giantHoard: st.coins.giantHoard -= result,
@@ -126,6 +128,7 @@ class Game extends Component {
         locked: Array(NUM_DICE).fill(false),
         giantLock: Array(G_DICE).fill(false)
       }));
+      console.log("What is hLoot after set state?", this.state.coins.halflingLoot);
     } else {
       this.setState(st => ({
         coins: {
