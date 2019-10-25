@@ -36,7 +36,7 @@ Knee is 10, house pays 5:1
 - [X] `Dice` and `dice rolling`
 - [ ] `Pot` tracking
 - [ ] `Payout` display and code
-- [ ] `Modal` has to move off to the left. Up and down seems to block call buttons. Div gets in the way. Maybe move to background somehow?
+- [X] `Modal` moves up and removes text to shrink it down.
 - [ ] Images?
 - [ ] Wagering
 - [ ] `EVENTUALLY` Keeping track of high scores: cookies? db?

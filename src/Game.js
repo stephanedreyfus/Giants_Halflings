@@ -118,9 +118,9 @@ class Game extends Component {
     console.log("What is hLoot before state change?", this.state.coins.halflingLoot)
 
     if (result > -1) {
-      console.log("Are we in win if?");
       this.setState(st => ({
         coins: {
+          ...st.coins,
           giantHoard: st.coins.giantHoard -= result,
           halfLingLoot: st.coins.halflingLoot += result,
           pot: 0,
@@ -128,7 +128,6 @@ class Game extends Component {
         locked: Array(NUM_DICE).fill(false),
         giantLock: Array(G_DICE).fill(false)
       }));
-      console.log("What is hLoot after set state?", this.state.coins.halflingLoot);
     } else {
       this.setState(st => ({
         coins: {
