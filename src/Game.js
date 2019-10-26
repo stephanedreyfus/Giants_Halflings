@@ -201,7 +201,7 @@ class Game extends Component {
   // FIXME close and X get passed the correct function, but not the correct
   // argument for the function, as that is added from the input field in the
   // wager. Need to get input into these functions.
-  /** Sets state to display wager modal information*/
+  /** Sets state to display wager modal information */
   wagerModal() {
     this.setState(st =>({
       modalContent: {
