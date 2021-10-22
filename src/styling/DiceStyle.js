@@ -15,7 +15,7 @@ export const DieBtn = styled.button`
   min-width: 57.02px;
   font-family: monospace;
   font-weight: bold;
-  background: ${props => props.locked ? "darkred" : "red"};
+  background: ${props => props.locked ? 'darkred' : 'red'};
   cursor: pointer;
   color: white;
   margin-right: 1em;

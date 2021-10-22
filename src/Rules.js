@@ -22,7 +22,7 @@ class Rules {
 class Score extends Rules {
   evalResults(hDice, gDice, pot) {
     const halflings = this.sum(hDice);
-    const knee = this.sum(gDice)
+    const knee = this.sum(gDice);
     const threeToOne = [7, 8, 9];
     const twoToOne = [4, 5, 6];
     const oneToOne = [2, 3];
@@ -60,6 +60,6 @@ class Score extends Rules {
   }
 }
 
-const doScore = new Score()
+const doScore = new Score();
 
-export { doScore }
+export { doScore };

@@ -55,7 +55,7 @@ Modal.propTypes = {
   close: PropTypes.func,
   children: PropTypes.node,
   baseGold: PropTypes.number,
-}
+};
 
 export default Modal;
 

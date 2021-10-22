@@ -17,13 +17,13 @@ const Giant = (props) => {
       />
     </GiantWrap>
   );
-}
+};
 
 Giant.propTypes = {
   hoard: PropTypes.number,
   val: PropTypes.array,
   locked: PropTypes.array,
   handleClick: PropTypes.func
-}
+};
 
 export default Giant;

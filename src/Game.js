@@ -56,7 +56,7 @@ class Game extends Component {
       this.state.giantLock.every(i => i === true) &&
       this.state.coins.pot >= 1) ||
       this.state.giantDie < 2
-      ) {
+    ) {
       this.doResults(this.state.halflingDice, this.state.giantDie);
     }
   }
@@ -112,10 +112,10 @@ class Game extends Component {
    * => calculated result value.
    */
   doResults(hDice, gDice) {
-    console.log("Do we get here? What is hDice?", hDice, "What is gDice?", gDice);
+    console.log('Do we get here? What is hDice?', hDice, 'What is gDice?', gDice);
     const result = doScore.evalResults(hDice, gDice, this.state.coins.pot);
-    console.log("What were the results?", result);
-    console.log("What is hLoot before state change?", this.state.coins.halflingLoot)
+    console.log('What were the results?', result);
+    console.log('What is hLoot before state change?', this.state.coins.halflingLoot);
 
     if (result > -1) {
       this.setState(st => ({
@@ -191,7 +191,7 @@ class Game extends Component {
       modalContent: {
         ...st.modalContent,
         message: <WrittenRules />,
-        btnText: "Return to Game",
+        btnText: 'Return to Game',
       }
     }));
     this.toggleModal();
@@ -206,9 +206,9 @@ class Game extends Component {
     this.setState(st =>({
       modalContent: {
         ...st.modalContent,
-        header: "Time to Ante Up!",
+        header: 'Time to Ante Up!',
         message: <Wager wager={this.wager} gold={this.state.coins.halflingLoot}/>,
-        btnText: "Cancel",
+        btnText: 'Cancel',
         close: this.toggleModal,
       }
     }));
@@ -222,9 +222,9 @@ class Game extends Component {
     this.setState(st => ({
       modalContent: {
         ...st.modalContent,
-        header: "You've Lost it All!",
-        btnText: "New Game",
-        message: "The Giant has won and you are out of gold. Click below to restart.",
+        header: 'You\'ve Lost it All!',
+        btnText: 'New Game',
+        message: 'The Giant has won and you are out of gold. Click below to restart.',
         // close: this.reset,
       }
     }));
@@ -234,7 +234,7 @@ class Game extends Component {
 
   render() {
     return (
-      <section className="Game">
+      <section className='Game'>
         <GameInfo>  
           <Halflings 
             dice={this.state.halflingDice}
@@ -252,18 +252,18 @@ class Game extends Component {
         </GameInfo>
 
         <div>
-          <button className="open-modal-btn" onClick={this.wagerModal}>Play Time!</button>
-          <button className="open-modal-btn" onClick={this.rulesModal}>Show Rules</button>
+          <button className='open-modal-btn' onClick={this.wagerModal}>Play Time!</button>
+          <button className='open-modal-btn' onClick={this.rulesModal}>Show Rules</button>
 
           <Modal
-            className="modal"
+            className='modal'
             btnText={this.state.modalContent.btnText}
             header={this.state.modalContent.header}
             show={this.state.isShowing}
             gold={this.state.modalContent.gold}
             close={this.state.modalContent.close}
           >
-           {this.state.modalContent.message}
+            {this.state.modalContent.message}
           </Modal>
         </div>
       </section>

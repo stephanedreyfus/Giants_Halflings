@@ -17,12 +17,12 @@ const Dice = (props) => {
       )}
     </DiceDiv>
   );
-}
+};
 
 Dice.propTypes={
   dice: PropTypes.array,
   locked: PropTypes.array,
   handleClick: PropTypes.func.isRequired,
-}
+};
 
 export default Dice;

@@ -9,7 +9,7 @@ const Die = (props) => {
       locked={ props.locked }>
       { props.val }
     </DieBtn>
-  )
+  );
 };
 
 Die.propTypes = {

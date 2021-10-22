@@ -18,6 +18,6 @@ class Pot extends Component {
 
 Pot.propTypes = {
   gold: PropTypes.number
-}
+};
 
 export default Pot;

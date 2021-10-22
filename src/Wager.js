@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   WagerButton,
   WagerForm,
-} from './styling/ModalStyle'
+} from './styling/ModalStyle';
 
 class Wager extends Component {
   constructor(props) {
@@ -48,6 +48,6 @@ class Wager extends Component {
 Wager.propTypes = {
   wager: PropTypes.func,
   gold: PropTypes.number
-}
+};
 
 export default Wager;
