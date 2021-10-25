@@ -42,6 +42,7 @@ class Game extends Component {
     this.rollHalflings = this.rollHalflings.bind(this);
     this.rollGiant = this.rollGiant.bind(this);
     this.doResults = this.doResults.bind(this);
+    this.resetGame = this.resetGame.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.wagerModal = this.wagerModal.bind(this);
     this.rulesModal = this.rulesModal.bind(this);
@@ -187,6 +188,39 @@ class Game extends Component {
     return this.state.giantDie;
   }
 
+  /**
+   * TODO Fix reset game.
+   * Resets game with an initial loan of 30 gold, but giant hoard unchanged.
+   * @returns this.state.coins // so we can confirm player at zero and giant unchanged.
+   */
+  resetGame() {
+    this.setState(st => ({
+      halflingDice: Array.from({ length: NUM_DICE }).fill(6),
+      locked: Array(NUM_DICE).fill(true),
+      giantDie: Array.from({ length: G_DICE }).fill(5),
+      giantLock: Array(G_DICE).fill(true),
+      split: false,
+      legendary: false,
+      coins: {
+        // House has unlimited funds, so giantHoard is how much Giant has
+        // gained or lost this game and is not reset.
+        giantHoard: st.coins.giantHoard,
+        halflingLoot: STARTING_FUNDS,
+        pot: 0,
+      },
+      isShowing: false,
+      modalContent: {
+        btnText: 'CONTINUE',
+        header: 'Welcome to Giants and Halflings!',
+        gold: STARTING_FUNDS,
+        message: `You start with ${STARTING_FUNDS} gold pieces.`,
+        close: this.toggleModal,
+      }
+    }));
+    this.toggleModal();
+    return this.state.coins;
+  }
+
   /** Sets state to display rules modal iformation*/
   rulesModal() {
     this.setState(st => ({
@@ -227,7 +261,7 @@ class Game extends Component {
         header: 'You\'ve Lost it All!',
         btnText: 'New Game',
         message: 'The Giant has won and you are out of gold. Click below to restart.',
-        // close: this.reset,
+        close: this.resetGame,
       }
     }));
     this.toggleModal();

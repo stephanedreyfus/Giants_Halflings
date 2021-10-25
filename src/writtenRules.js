@@ -48,7 +48,7 @@ const WrittenRules = () => {
         </li>
         <li>
           If the Halflings hit the Knee <i>again</i> while split
-          they can choose to go lengendary by going "Legendary".
+          they can choose to go <b>"Legendary"</b>.
           They now roll <i>eight</i> dice, with each pair
           representing a quarter of their quadrupled wager.
         </li>
