@@ -116,13 +116,15 @@ class Game extends Component {
     const result = doScore.evalResults(hDice, gDice, this.state.coins.pot);
     console.log('What were the results?', result);
     console.log('What is hLoot before state change?', this.state.coins.halflingLoot);
+    const newHalflingVal = this.state.coins.halflingLoot += result;
+    const newGiantVal = this.state.coins.giantHoard -= result;
 
     if (result > -1) {
       this.setState(st => ({
         coins: {
           ...st.coins,
-          giantHoard: st.coins.giantHoard -= result,
-          halfLingLoot: st.coins.halflingLoot += result,
+          giantHoard: newGiantVal,
+          halfLingLoot: newHalflingVal,
           pot: 0,
         },
         locked: Array(NUM_DICE).fill(false),
