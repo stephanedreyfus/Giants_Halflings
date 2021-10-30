@@ -189,7 +189,6 @@ class Game extends Component {
   }
 
   /**
-   * TODO Fix reset game.
    * Resets game with an initial loan of 30 gold, but giant hoard unchanged.
    * @returns this.state.coins // so we can confirm player at zero and giant unchanged.
    */
@@ -211,9 +210,9 @@ class Game extends Component {
       isShowing: false,
       modalContent: {
         btnText: 'CONTINUE',
-        header: 'Welcome to Giants and Halflings!',
+        header: 'Ready for another round of Giants and Halflings?',
         gold: STARTING_FUNDS,
-        message: `You start with ${STARTING_FUNDS} gold pieces.`,
+        message: `You will be loaned another ${STARTING_FUNDS} gold pieces.`,
         close: this.toggleModal,
       }
     }));

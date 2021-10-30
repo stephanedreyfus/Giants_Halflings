@@ -4,6 +4,8 @@
 ### A Game of Chance in Which Halflings Attempt to Take On a Giant
 Giants and Halflings is a game of chance created by [Jerry Holkins][1], and implemented in [a game][2] of [D&D][3] that he was ([and seems to have finished?][4]) running for his friends.
 
+## Tech Stack
+This app was built with Create React App, using classes, and with Typescript added. There is currently no database or storage for scores.
 
 ### Images
 [Halflings][5] and [giant][6] images are copyrighted to [Wizards of the Coast][7].
