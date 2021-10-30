@@ -1,0 +1,30 @@
+/* FIXME Remove extranneous css and port used css to styled components. */
+
+.modal-body {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.modal-footer {
+    background: #263238;
+    height: 35px;
+    padding: 15px;
+}
+
+.close-modal-btn {
+    color: white;
+    cursor: pointer;
+    float: right;
+    font-size: 30px;
+    margin: 0;
+}
+
+.close-modal-btn:hover {
+    color: black;
+}
+
+.open-modal-btn {
+    margin: 15px;
+    padding: 10px;
+    font-weight: bold;
+}
