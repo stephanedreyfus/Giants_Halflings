@@ -4,9 +4,6 @@
 ### A Game of Chance in Which Halflings Attempt to Take On a Giant
 Giants and Halflings is a game of chance created by [Jerry Holkins][1], and implemented in [a game][2] of [D&D][3] that he was ([and seems to have finished?][4]) running for his friends.
 
-## Tech Stack
-This app was built with Create React App, using classes, and with Typescript added. There is currently no database or storage for scores.
-
 ### Images
 [Halflings][5] and [giant][6] images are copyrighted to [Wizards of the Coast][7].
 
@@ -35,7 +32,7 @@ The Halflings, the player, then click to roll each die individually. You are try
 - If the Knee is 10, house pays 5:1
 
 # How I made it and how to run it
-This app was started using [create-react-app][8]. Stéphane Dreyfus wrote this React app in JSX for use on the web. I was inspired to write it while listening to *the 'C' Team*, and got some fundamentallly helpful starting pointers from my teachers at the [Rithm School][9].
+This app was started using [create-react-app][8]. Stéphane Dreyfus wrote this React app in JSX for use on the web. I was inspired to write it while listening to *the 'C' Team*, and got some fundamentallly helpful starting pointers from my teachers at the [Rithm School][9]. [TypeScript][10] was added in as I wanted to practice its use.
 
 ## To Run the App
 - Clone to your computer from GitHub
@@ -57,3 +54,4 @@ This app was started using [create-react-app][8]. Stéphane Dreyfus wrote this R
 [7]: https://company.wizards.com/
 [8]: https://github.com/facebook/create-react-app
 [9]: https://www.rithmschool.com/
+[10]: https://www.typescriptlang.org/
